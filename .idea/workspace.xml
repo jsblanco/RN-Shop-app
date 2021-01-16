@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ac7fc9e-7ef2-4ebe-8006-94167965fa7f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/RootDrawerNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/RootDrawerNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/stacks/OrdersStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/OrdersStackNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/stacks/ProductsStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/ProductsStackNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/stacks/ShoppingStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/ShoppingStackNavigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.styles.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +25,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
-        <option value="TypeScript File" />
         <option value="React Native Ts component.tsx.child.0" />
         <option value="React Native Ts component" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -48,7 +56,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/constants" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/components/basicComponents" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
@@ -56,6 +64,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/basicComponents" />
+      <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/constants" />
       <recent name="$PROJECT_DIR$/components" />
     </key>
@@ -71,7 +81,16 @@
       <workItem from="1610805373498" duration="747000" />
       <workItem from="1610806763073" duration="679000" />
       <workItem from="1610807785631" duration="1824000" />
+      <workItem from="1610810671667" duration="2360000" />
     </task>
+    <task id="LOCAL-00001" summary="Created base project and added navigation base">
+      <created>1610810696838</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610810696838</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -87,15 +106,24 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created base project and added navigation base" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created base project and added navigation base" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/navigation/stacks/OrdersStackNavigation.tsx</url>
-          <line>4</line>
-          <properties lambdaOrdinal="-1" />
+          <line>6</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,6 +1,8 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import HomeScreen from "../../screens/HomeScreen/HomeScreen";
+import OrdersScreen from "../../screens/OrdersScreen/OrdersScreen";
+import styles from './stack.styles'
+import colours from "../../constants/colours";
 
 const Stack = createStackNavigator();
 export function OrdersStackNavigation() {
@@ -9,10 +11,14 @@ export function OrdersStackNavigation() {
     return (
         <Stack.Navigator
             initialRouteName="Home"
+            screenOptions={{
+                headerTintColor: colours.primary,
+                ...styles
+            }}
         >
             <Stack.Screen
                 name="Home"
-                component={HomeScreen}
+                component={OrdersScreen}
                 options={{}}
             />
             {/*<Stack.Screen*/}
