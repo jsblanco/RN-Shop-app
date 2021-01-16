@@ -3,6 +3,8 @@ import {createStackNavigator} from "@react-navigation/stack";
 import ProductsScreen from "../../screens/ProductsScreen/ProductsScreen";
 import colours from "../../constants/colours";
 import styles from "./stack.styles";
+import EditProductsScreen from "../../screens/EditProductsScreen/EditProductsScreen";
+import ProductDetailsScreen from "../../screens/ProductDetailsScreen/ProductDetailsScreen";
 
 const Stack = createStackNavigator();
 export function ProductsStackNavigation() {
@@ -11,26 +13,26 @@ export function ProductsStackNavigation() {
     return (
         <Stack.Navigator
             initialRouteName="Home"
+            // @ts-ignore
             screenOptions={{
-                headerTintColor: colours.primary,
                 ...styles
             }}
         >
             <Stack.Screen
-                name="Home"
+                name="Products"
                 component={ProductsScreen}
                 options={{}}
             />
-            {/*<Stack.Screen*/}
-            {/*    name="Orders"*/}
-            {/*    component={}*/}
-            {/*    options={}*/}
-            {/*/>*/}
-            {/*<Stack.Screen*/}
-            {/*    name="Products"*/}
-            {/*    component={}*/}
-            {/*    options={}*/}
-            {/*/>*/}
+            <Stack.Screen
+                name="ProductDetails"
+                component={ProductDetailsScreen}
+                options={{}}
+            />
+            <Stack.Screen
+                name="EditProduct"
+                component={EditProductsScreen}
+                options={{}}
+            />
         </Stack.Navigator>
     )
 

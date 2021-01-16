@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ac7fc9e-7ef2-4ebe-8006-94167965fa7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/navigation/navigationTypes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navigation/RootDrawerNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/RootDrawerNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/basicComponents/HeaderButton/HeaderButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/basicComponents/HeaderButton/HeaderButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/navigation/stacks/OrdersStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/OrdersStackNavigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/navigation/stacks/ProductsStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/ProductsStackNavigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/navigation/stacks/ShoppingStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/ShoppingStackNavigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.styles.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen/HomeScreen.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/stacks/stack.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/stack.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ProductsScreen/ProductsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProductsScreen/ProductsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ShoppingScreen/ShoppingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ShoppingScreen/ShoppingScreen.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +26,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
         <option value="React Native Ts component.tsx.child.0" />
         <option value="React Native Ts component" />
-        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -69,6 +70,9 @@
       <recent name="$PROJECT_DIR$/constants" />
       <recent name="$PROJECT_DIR$/components" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/screens/Shop" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -81,7 +85,7 @@
       <workItem from="1610805373498" duration="747000" />
       <workItem from="1610806763073" duration="679000" />
       <workItem from="1610807785631" duration="1824000" />
-      <workItem from="1610810671667" duration="2360000" />
+      <workItem from="1610810671667" duration="4191000" />
     </task>
     <task id="LOCAL-00001" summary="Created base project and added navigation base">
       <created>1610810696838</created>
@@ -90,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610810696838</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added base screens for navigation stacks">
+      <created>1610813720500</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610813720500</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,20 +121,26 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created base project and added navigation base" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created base project and added navigation base" />
+    <MESSAGE value="Added base screens for navigation stacks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added base screens for navigation stacks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/navigation/stacks/OrdersStackNavigation.tsx</url>
-          <line>6</line>
+          <line>7</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx</url>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/screens/OrderDetailsScreen/OrderDetailsScreen.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

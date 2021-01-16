@@ -1,11 +1,11 @@
-import {StyleSheet} from "react-native";
 import colours from "../../constants/colours";
 
 
-const styles = StyleSheet.create({
+const styles = {
     headerStyle: {
         elevation: 10,
     },
+    headerTintColor: colours.primary,
     headerTitleStyle: {
         color: colours.primary,
         fontWeight: '900',
@@ -14,6 +14,6 @@ const styles = StyleSheet.create({
     headerBackTitleStyle: {
         fontFamily: 'openSans'
     }
-})
+}
 
 export default styles;

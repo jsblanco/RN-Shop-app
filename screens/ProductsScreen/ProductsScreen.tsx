@@ -2,12 +2,12 @@ import React from 'react';
 import {View} from 'react-native';
 import styles from './ProductsScreen.styles';
 import Text from "../../components/basicComponents/Text/Text";
-import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import HeaderButton from "../../components/basicComponents/HeaderButton/HeaderButton";
-import {DrawerActions} from "@react-navigation/native";
+import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {StackScreenProps} from "@react-navigation/stack";
+import {DrawerActions} from "@react-navigation/native";
 
-type Props = StackScreenProps<ProductsStackNavigation, 'Home'>;
+type Props = StackScreenProps<ProductsStackNavigation, 'Products'>;
 
 
 const ProductsScreen = ({route, navigation}: Props) => {

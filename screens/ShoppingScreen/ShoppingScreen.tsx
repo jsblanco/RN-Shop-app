@@ -7,7 +7,7 @@ import HeaderButton from "../../components/basicComponents/HeaderButton/HeaderBu
 import {DrawerActions} from "@react-navigation/native";
 import {StackScreenProps} from "@react-navigation/stack";
 
-type Props = StackScreenProps<ShoppingStackNavigation, 'Home'>;
+type Props = StackScreenProps<ShoppingStackNavigation, 'Catalogue'>;
 
 const ShoppingScreen = ({route, navigation}: Props) => {
 

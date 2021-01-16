@@ -7,7 +7,7 @@ import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import HeaderButton from "../../components/basicComponents/HeaderButton/HeaderButton";
 import { DrawerActions } from '@react-navigation/native';
 
-type Props = StackScreenProps<OrderStackNavigation, 'Home'>;
+type Props = StackScreenProps<OrderStackNavigation, 'Orders'>;
 
 const OrdersScreen = ({route, navigation}: Props) => {
 
