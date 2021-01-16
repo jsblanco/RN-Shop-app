@@ -32,18 +32,18 @@ const Button = (props: { onPress: (...args: any[] ) => any | void, buttonStyle?:
 
 const styles = StyleSheet.create({
     view: {
-        backgroundColor: colours.accent,
+        backgroundColor: colours.brightAccent,
         paddingVertical: Dimensions.get('window').height > 600 ? 10 : 7,
         paddingHorizontal: 15,
         borderWidth: 0,
-        borderRadius: 25,
+        borderRadius: 10,
         margin: 2,
 
     },
     text: {
-        color: colours.text.regular,
+        color: 'white',
+        paddingBottom: 0,
         fontFamily: 'openSans',
-        textTransform: 'uppercase',
         fontWeight: 'bold',
         textAlign: 'center'
     }

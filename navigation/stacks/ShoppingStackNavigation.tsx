@@ -1,13 +1,12 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import ShoppingScreen from "../../screens/ShoppingScreen/ShoppingScreen";
 import styles from "./stack.styles";
 import OrderDetailsScreen from "../../screens/OrderDetailsScreen/OrderDetailsScreen";
 import ShoppingCartScreen from "../../screens/ShoppingCartScreen/ShoppingCartScreen";
+import CatalogueScreen from "../../screens/CatalogueScreen/CatalogueScreen";
 
 const Stack = createStackNavigator();
 export function ShoppingStackNavigation() {
-
 
     return (
         <Stack.Navigator
@@ -19,7 +18,7 @@ export function ShoppingStackNavigation() {
         >
             <Stack.Screen
                 name="Catalogue"
-                component={ShoppingScreen}
+                component={CatalogueScreen}
                 options={{}}
             />
             <Stack.Screen
