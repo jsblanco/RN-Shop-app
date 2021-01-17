@@ -19,12 +19,13 @@ const OrderListItem = ({order}: { order: Order }) => {
         <View style={styles.container}>
             <ButtonType onPress={seeOrderDetails} useForeground={true}>
                 <View style={styles.screen}>
-                    <View>
+                    <View style={styles.orderData}>
                         <Text>Order id: {order.id}</Text>
                         <Text>Ordered on: {date}</Text>
                     </View>
-                    <View>
-                        <Text>{order.price} €</Text>
+                    <View style={styles.orderPrice}>
+                        <Text>Order price:</Text>
+                        <Text style={styles.bold}>{order.price} €</Text>
                     </View>
                 </View>
             </ButtonType>

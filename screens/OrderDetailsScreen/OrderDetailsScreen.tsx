@@ -10,7 +10,6 @@ import CartItem from "../../components/CartItem/CartItem";
 import Button from "../../components/basicComponents/Button/Button";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import HeaderButton from "../../components/basicComponents/HeaderButton/HeaderButton";
-import {DrawerActions} from "@react-navigation/native";
 import {Order} from "../../models/Order";
 
 type Props = StackScreenProps<ShoppingStackNavigation, 'OrderDetails'>;
@@ -18,7 +17,7 @@ type Props = StackScreenProps<ShoppingStackNavigation, 'OrderDetails'>;
 
 const OrderDetailsScreen = ({route, navigation}: Props) => {
 
-    const {justOrdered, orderId} = route.params
+    const {orderId} = route.params
 
     let orderDetails: Order | undefined
     orderId
@@ -46,21 +45,16 @@ const OrderDetailsScreen = ({route, navigation}: Props) => {
                           onPress={navigation.popToTop}/>
                 </HeaderButtons>
             ),
-        })
-        ;
+        });
     }, [navigation]);
 
-    const title = justOrdered ? 'Your order was completed successfully!' : 'Order details'
-    const callToAction = justOrdered ?
-        <Button onPress={navigation.popToTop}>Return to our catalogue</Button> : undefined;
 
     return (
         <View style={styles.screen}>
             <View style={styles.header}>
-                <Text style={styles.title}>{title}</Text>
                 <Text>Order ID: {orderDetails.id}</Text>
                 <Text>Order completed on: {date}</Text>
-                {callToAction}
+                <Button onPress={navigation.popToTop}>Return</Button>
             </View>
             <FlatList
                 data={orderDetails.purchases}

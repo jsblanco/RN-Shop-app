@@ -15,7 +15,7 @@ const ordersReducer = (state: StateType = initialState, {type, payload}: { type:
         case constants.ADD_ORDER:
             const id = new Date().getTime().toString();
             order = new Order(id, payload.orderItems, new Date())
-            return {...state, orders: [...state.orders, order]}
+            return {...state, orders: [order, ...state.orders]}
         default:
             return {...state};
     }

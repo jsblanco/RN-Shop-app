@@ -42,9 +42,9 @@ export default StyleSheet.create({
     },
     totalAmount: {
         fontSize: 16,
+        paddingTop: 15,
+        marginBottom: 7,
         paddingHorizontal: 20,
-        // paddingVertical: 15,
-        marginBottom: 7
     },
     button: {
         marginBottom: 4,

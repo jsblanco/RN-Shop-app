@@ -24,7 +24,7 @@ export default StyleSheet.create({
     },
     header: {
         width: '100%',
-        paddingBottom: 15,
+        paddingVertical: 15,
         paddingHorizontal: 20,
         backgroundColor: '#fff',
         shadowColor: "#000",

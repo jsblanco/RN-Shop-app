@@ -1,47 +1,44 @@
 import React from 'react';
 import {FlatList, View} from 'react-native';
-import styles from './CatalogueScreen.styles';
 import {StackScreenProps} from "@react-navigation/stack";
-import {HeaderButtons, Item} from "react-navigation-header-buttons";
-import HeaderButton from "../../components/basicComponents/HeaderButton/HeaderButton";
-import ProductListItem from "../../components/ProductListItem/ProductListItem";
-import {DrawerActions} from "@react-navigation/native";
-import {useSelector} from "react-redux";
+import styles from './CatalogueScreen.styles';
+import * as actions from "../../store/actions/products.actions";
+import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import {Product} from "../../models/Product";
+import {Ionicons} from "@expo/vector-icons";
+import colours from "../../constants/colours";
+import ProductListItem from "../../components/ProductListItem/ProductListItem";
+import Button from "../../components/basicComponents/Button/Button";
 
 type Props = StackScreenProps<ShoppingStackNavigation, 'Catalogue'>;
 
 const CatalogueScreen = ({route, navigation}: Props) => {
 
     const products = useSelector((state: RootState) => state.products.availableProducts);
+    const dispatch = useDispatch();
+
     const renderProductList = ({item}: { item: Product }) => {
-        // @ts-ignore
+        const onSelect = () => navigation.navigate('ProductDetails', {productId: item.id});
+        const addToCart = () => dispatch(actions.addToCart(item.id));
         return (
             <ProductListItem
                 product={item}
-                onClickDetails={() => navigation.navigate('ProductDetails', {productId: item.id})}
-            />
+                onSelect={onSelect}
+            >
+                <Button buttonStyle={styles.button} textStyle={styles.buttonText}
+                        onPress={(onSelect)}>
+                    <Ionicons name={"search-outline"} size={16} color={colours.brightAccent}/>{'  '}
+                    View details
+                </Button>
+                <Button buttonStyle={styles.button} textStyle={styles.buttonText}
+                        onPress={addToCart}>
+                    <Ionicons name={"cart-outline"} size={16} color={colours.brightAccent}/>{'  '}
+                    Add to cart
+                </Button>
+            </ProductListItem>
         )
     }
-
-    React.useLayoutEffect(() => {
-        navigation.setOptions({
-            headerLeft: () => (
-                <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                    <Item title={'Menu'} iconName={'ios-menu'}
-                          onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}/>
-                </HeaderButtons>
-            ),
-            headerRight: () => (
-                <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                    <Item title={'Add to cart'} iconName={'cart-outline'}
-                          onPress={() => navigation.navigate('ShoppingCart')}/>
-                </HeaderButtons>
-            )
-        })
-        ;
-    }, [navigation]);
 
     return (
         <View style={styles.screen}>

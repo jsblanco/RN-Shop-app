@@ -2,6 +2,7 @@ import React from 'react';
 import {HeaderButton as HButton} from 'react-navigation-header-buttons';
 import {Ionicons} from '@expo/vector-icons';
 import colours from '../../../constants/colours';
+import {Platform} from "react-native";
 
 
 export default function HeaderButton(props: any) {
@@ -11,7 +12,7 @@ export default function HeaderButton(props: any) {
             {...props}
             IconComponent={Ionicons}
             iconSize={21}
-            color={colours.primary}
+            color={Platform.OS === 'android' ? colours.background : colours.primary}
         />
     )
 }

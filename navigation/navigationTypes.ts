@@ -6,7 +6,6 @@ type ShoppingStackNavigation = {
     ShoppingCart: undefined;
     OrderDetails: {
         orderId: string,
-        justOrdered: boolean
     }
 };
 
@@ -14,7 +13,6 @@ type OrderStackNavigation = {
     Orders: undefined;
     OrderDetails: {
         orderId: string,
-        justOrdered: boolean
     }
     ProductDetails: {
         productId: string,
@@ -26,5 +24,8 @@ type ProductsStackNavigation = {
     ProductDetails: {
         productId: string,
     };
-    EditProduct: undefined;
+    EditProduct: {
+        productId?: string,
+    };
+    AddProduct: undefined
 };

@@ -6,15 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="7ac7fc9e-7ef2-4ebe-8006-94167965fa7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CartItem/CartItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CartItem/CartItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/Order.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/OrderListItem/OrderListItem.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/OrderListItem/OrderListItem.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/OrderListItem/OrderListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/OrderListItem/OrderListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/basicComponents/HeaderButton/HeaderButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/basicComponents/HeaderButton/HeaderButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/navigation/navigationTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/navigationTypes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/navigation/stacks/OrdersStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/OrdersStackNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/stacks/ProductsStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/ProductsStackNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/stacks/ShoppingStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/ShoppingStackNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/stacks/stack.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/stack.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CatalogueScreen/CatalogueScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CatalogueScreen/CatalogueScreen.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CatalogueScreen/CatalogueScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CatalogueScreen/CatalogueScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/OrderDetailsScreen/OrderDetailsScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrderDetailsScreen/OrderDetailsScreen.styles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/OrderDetailsScreen/OrderDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrderDetailsScreen/OrderDetailsScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.styles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ProductDetailsScreen/ProductDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProductDetailsScreen/ProductDetailsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ProductsScreen/ProductsScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProductsScreen/ProductsScreen.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ProductsScreen/ProductsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProductsScreen/ProductsScreen.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.styles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/actions/products.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/actions/products.actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/constants/products.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/constants/products.constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/reducers/orders.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/reducers/orders.reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/reducers/products.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/reducers/products.reducers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,14 +159,15 @@
     <MESSAGE value="Added Redux basics and created main Products screen + product list component" />
     <MESSAGE value="Completed shopping cart + cart items styling" />
     <MESSAGE value="Added orders redux workflow + clearing cart button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added orders redux workflow + clearing cart button" />
+    <MESSAGE value="Started building Products section" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started building Products section" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/navigation/stacks/OrdersStackNavigation.tsx</url>
-          <line>7</line>
+          <line>10</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -162,18 +179,6 @@
           <url>file://$PROJECT_DIR$/screens/OrderDetailsScreen/OrderDetailsScreen.tsx</url>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx</url>
-          <line>23</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.tsx</url>
-          <line>21</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
