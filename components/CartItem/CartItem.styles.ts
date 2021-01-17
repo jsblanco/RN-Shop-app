@@ -4,13 +4,13 @@ import colours from "../../constants/colours";
 export default StyleSheet.create({
     screen: {
         flex: 1,
+        height: 200,
         justifyContent: 'center',
-        marginHorizontal: 20,
-        marginVertical: 15,
-        height: 300,
-        borderRadius: 5,
+        alignItems: 'center',
         overflow: 'hidden',
         backgroundColor: 'white',
+        margin: 20,
+        borderRadius: 5,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -20,8 +20,12 @@ export default StyleSheet.create({
         shadowRadius: 8,
         elevation: 5,
     },
-    imageContainer: {
-        height: '65%',
+    container: {
+      flex: 1,
+      width: '100%',
+    },
+    imageRow: {
+        height: '60%',
         width: '100%',
     },
     image: {
@@ -30,29 +34,31 @@ export default StyleSheet.create({
         borderTopLeftRadius: 5,
         borderTopRightRadius: 5,
     },
-    titleContainer: {
-        height: '20%',
-        paddingVertical: 5,
-        paddingHorizontal: 12,
+    dataRow: {
+        width: '100%',
+        paddingHorizontal: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     title: {
-        textAlign: "center",
         fontFamily: 'openSansBold',
-        fontSize: 16,
+        fontSize: 18
     },
-    price: {
-        textAlign: "center",
-        fontSize: 12,
-    },
-    actionsBar: {
+    actionRow: {
         width: '100%',
+        paddingHorizontal: 20,
+        paddingBottom: 15,
         flexDirection: 'row',
-        justifyContent: "space-between",
+        justifyContent: 'space-between'
+    },
+    total: {
+        fontSize: 18,
+        fontFamily: 'openSansBold'
     },
     button: {
-        marginBottom: 10,
-        marginHorizontal: 10,
-        backgroundColor: 'white'
+        padding: 0,
+        borderRadius: 10,
+        backgroundColor: 'white',
     },
     buttonText: {
         fontSize: 12,
