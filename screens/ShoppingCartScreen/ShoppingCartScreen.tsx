@@ -38,7 +38,7 @@ const ShoppingCartScreen = ({route, navigation}: Props) => {
             <View style={styles.header}>
                 <View style={styles.actionsRow}>
                     <Text style={styles.totalAmount}>Total:
-                        <Text style={styles.bold}> {totalAmount.toFixed(2)}€</Text>
+                        <Text style={styles.bold}> {Math.round(+totalAmount.toFixed(2)*100)/100}€</Text>
                     </Text>
                     <View>
                         {

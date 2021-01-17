@@ -16,6 +16,7 @@ const initialState: StateType = {
 }
 
 const productsReducer = (state: StateType = initialState, {type, payload}: { type: string, payload?: any }) => {
+    console.log(payload)
     let product: Product | undefined;
     let productCartIndex: number, updatedCart: { product: Product, amount: number }[];
     switch (type) {
@@ -57,6 +58,20 @@ const productsReducer = (state: StateType = initialState, {type, payload}: { typ
                 availableProducts: state.availableProducts.filter(product => product.id !== payload.productId),
                 userProducts: state.userProducts.filter(product => product.id !== payload.productId),
             };
+        case constants.CREATE_PRODUCT:
+            product = new Product(new Date().getTime().toString(), 'u3', payload.title, payload.description, payload.imageUrl, (+payload.price-0.01))
+            return {
+                ...state,
+                availableProducts: [product, ...state.availableProducts],
+                userProducts: [product, ...state.userProducts]
+            }
+        case constants.UPDATE_PRODUCT:
+            product = new Product(payload.id, 'u3', payload.title, payload.description, payload.imageUrl, (+payload.price-0.01))
+            return {
+                ...state,
+                availableProducts: [product, ...state.availableProducts.filter(product => product.id !== payload.id)],
+                userProducts: [product, ...state.userProducts.filter(product => product.id !== payload.id)]
+            }
         default:
             return {...state};
     }

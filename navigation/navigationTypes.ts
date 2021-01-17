@@ -23,9 +23,8 @@ type ProductsStackNavigation = {
     Products: undefined;
     ProductDetails: {
         productId: string,
-    };
+    }
     EditProduct: {
         productId?: string,
-    };
-    AddProduct: undefined
+    }
 };

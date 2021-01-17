@@ -26,3 +26,28 @@ export const deleteProduct = (productId: string) => {
         payload: {productId}
     }
 }
+
+export const updateProduct = (id: string, title: string, description: string, price: string, imageUrl: string) => {
+    return {
+        type: constants.UPDATE_PRODUCT,
+        payload: {
+            id,
+            title,
+            description,
+            price,
+            imageUrl
+        }
+    }
+}
+
+export const createProduct = (title: string, description: string, price: string, imageUrl: string) => {
+    return {
+        type: constants.CREATE_PRODUCT,
+        payload: {
+            title,
+            description,
+            price,
+            imageUrl
+        }
+    }
+}

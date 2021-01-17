@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import {Order} from "../../models/Order";
 import OrderListItem from "../../components/OrderListItem/OrderListItem";
+import Text from "../../components/basicComponents/Text/Text";
 
 type Props = StackScreenProps<OrderStackNavigation, 'Orders'>;
 
@@ -15,6 +16,8 @@ const OrdersScreen = ({route, navigation}: Props) => {
     const renderOrderItems= ({item}: {item: Order}) => {
         return <OrderListItem order={item} />
     }
+
+    if (orders.length===0) return <Text>You have made no orders</Text>;
 
     return (
         <View style={styles.screen}>

@@ -23,9 +23,10 @@ export function ProductsStackNavigation() {
             }}
         >
             <Stack.Screen
-                name="My Products"
+                name="Products"
                 component={ProductsScreen}
                 options={{
+                    headerTitle: 'My Products',
                     headerLeft: () => (
                         <HeaderButtons HeaderButtonComponent={HeaderButton}>
                             <Item title={'Menu'} iconName={'ios-menu'}
@@ -35,7 +36,7 @@ export function ProductsStackNavigation() {
                     headerRight: () => (
                         <HeaderButtons HeaderButtonComponent={HeaderButton}>
                             <Item title={'Create'} iconName={Platform.OS === 'android' ? 'md-create' : 'ios-create' }
-                                  onPress={() => console.log('Create product')}/>
+                                  onPress={()=>navigation.navigate('EditProduct', {})}/>
                         </HeaderButtons>
                     ),
                 }}
@@ -46,11 +47,6 @@ export function ProductsStackNavigation() {
             />
             <Stack.Screen
                 name="EditProduct"
-                component={EditProductsScreen}
-                options={{}}
-            />
-            <Stack.Screen
-                name="AddProduct"
                 component={EditProductsScreen}
                 options={{}}
             />
