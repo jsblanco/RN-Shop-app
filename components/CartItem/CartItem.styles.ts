@@ -4,12 +4,13 @@ import colours from "../../constants/colours";
 export default StyleSheet.create({
     screen: {
         flex: 1,
-        height: 200,
+        // height: 200,
         justifyContent: 'center',
         alignItems: 'center',
         overflow: 'hidden',
         backgroundColor: 'white',
-        margin: 20,
+        marginHorizontal: 20,
+        marginVertical: 10,
         borderRadius: 5,
         shadowColor: "#000",
         shadowOffset: {
@@ -25,7 +26,7 @@ export default StyleSheet.create({
       width: '100%',
     },
     imageRow: {
-        height: '60%',
+        height: 120,
         width: '100%',
     },
     image: {
@@ -36,6 +37,7 @@ export default StyleSheet.create({
     },
     dataRow: {
         width: '100%',
+        paddingTop: 10,
         paddingHorizontal: 20,
         flexDirection: 'row',
         justifyContent: 'space-between'
@@ -47,7 +49,7 @@ export default StyleSheet.create({
     actionRow: {
         width: '100%',
         paddingHorizontal: 20,
-        paddingBottom: 15,
+        paddingBottom: 5,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },

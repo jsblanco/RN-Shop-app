@@ -8,6 +8,11 @@ import {RootState} from "../../store/store";
 import CartItem from "../../components/CartItem/CartItem";
 import {Product} from "../../models/Product";
 import Button from "../../components/basicComponents/Button/Button";
+import * as productsActions from '../../store/actions/products.actions'
+import * as orderActions from '../../store/actions/orders.actions'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import BottomRightButton from "../../components/basicComponents/BottomRightButton/BottomRightButton";
 
 type Props = StackScreenProps<ShoppingStackNavigation, 'ShoppingCart'>;
 
@@ -17,12 +22,17 @@ const ShoppingCartScreen = ({route, navigation}: Props) => {
     if (cartItems.length === 0) {
         return (
             <View style={styles.screen}>
-                <Text style={styles.title}>ShoppingCartScreen works!</Text>
+                <Text style={styles.title}>Your Shopping Cart</Text>
                 <Text>Your cart is empty</Text>
             </View>
         )
     }
-
+    const dispatch = useDispatch();
+    const emptyCart = () => dispatch(productsActions.emptyCart())
+    const confirmOrder = () => {
+        dispatch(orderActions.addOrder(cartItems));
+        navigation.navigate('OrderDetails', {justOrdered: true})
+    }
     const renderCartItems = ({item}: { item: { product: Product, amount: number } }) => {
         return <CartItem item={item}/>
     }
@@ -42,7 +52,7 @@ const ShoppingCartScreen = ({route, navigation}: Props) => {
                         <Button
                             buttonStyle={styles.button}
                             textStyle={styles.buttonText}
-                            onPress={() => console.log(cartItems)}>Confirm purchase</Button>
+                            onPress={confirmOrder}>Confirm purchase</Button>
                     </View>
                 </View>
             </View>
@@ -52,6 +62,9 @@ const ShoppingCartScreen = ({route, navigation}: Props) => {
                 renderItem={renderCartItems}
                 keyExtractor={item => item.product.id}
             />
+            <BottomRightButton onPress={emptyCart}>
+                <FontAwesomeIcon icon={ faTrashAlt } color={'white'} />
+            </BottomRightButton>
         </View>
     )
 }

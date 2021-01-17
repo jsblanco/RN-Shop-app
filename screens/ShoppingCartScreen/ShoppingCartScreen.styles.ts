@@ -55,5 +55,5 @@ export default StyleSheet.create({
     },
     buttonText: {
         color: colours.brightAccent
-    }
+    },
 })

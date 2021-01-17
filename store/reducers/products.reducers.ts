@@ -14,7 +14,7 @@ const initialState: StateType = {
     cart: [],
 }
 
-const productsReducer = (state: StateType = initialState, {type, payload}: { type: string, payload: any }) => {
+const productsReducer = (state: StateType = initialState, {type, payload}: { type: string, payload?: any }) => {
     let product: Product | undefined;
     let productCartIndex: number, updatedCart: { product: Product, amount: number }[];
     switch (type) {
@@ -44,6 +44,8 @@ const productsReducer = (state: StateType = initialState, {type, payload}: { typ
                 ...state,
                 cart: updatedCart
             }
+        case constants.EMPTY_CART:
+            return {...state, cart: []}
         default:
             return {...state};
     }

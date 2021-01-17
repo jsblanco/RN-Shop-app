@@ -13,3 +13,9 @@ export const removeFromCart = (projectId: string) => {
         payload: {projectId}
     }
 }
+
+export const emptyCart = () =>{
+    return {
+        type: constants.EMPTY_CART
+    }
+}

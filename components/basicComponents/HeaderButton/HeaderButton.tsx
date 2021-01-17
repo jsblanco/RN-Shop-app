@@ -12,7 +12,6 @@ export default function HeaderButton(props: any) {
             IconComponent={Ionicons}
             iconSize={21}
             color={colours.primary}
-            // color={colours.primary}
         />
     )
 }

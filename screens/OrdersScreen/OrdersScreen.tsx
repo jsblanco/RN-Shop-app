@@ -6,11 +6,13 @@ import {StackScreenProps} from "@react-navigation/stack";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import HeaderButton from "../../components/basicComponents/HeaderButton/HeaderButton";
 import { DrawerActions } from '@react-navigation/native';
+import {useSelector} from "react-redux";
+import {RootState} from "../../store/store";
 
 type Props = StackScreenProps<OrderStackNavigation, 'Orders'>;
 
 const OrdersScreen = ({route, navigation}: Props) => {
-
+    const orders = useSelector((state: RootState)=>state.orders.orders);
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerLeft: () => (
@@ -28,6 +30,7 @@ const OrdersScreen = ({route, navigation}: Props) => {
     return (
         <View style={styles.screen}>
             <Text>OrdersScreen works!</Text>
+            <Text>{orders.length}</Text>
         </View>
     )
 }

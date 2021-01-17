@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    Dimensions, Platform,
+    Platform,
     StyleSheet,
     Text,
     TextStyle, TouchableNativeFeedback,
@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import colours from '../../../constants/colours';
 
-const Button = (props: { onPress: (...args: any[]) => any | void, position?: ViewStyle, buttonStyle?: ViewStyle, textStyle?: TextStyle, children: React.ReactNode }) => {
+const BottomRightButton = (props: { onPress: (...args: any[]) => any | void, position?: ViewStyle, buttonStyle?: ViewStyle, textStyle?: TextStyle, children: React.ReactNode }) => {
 
 
     let ButtonType: any = TouchableOpacity;
@@ -34,16 +34,19 @@ const Button = (props: { onPress: (...args: any[]) => any | void, position?: Vie
 
 const styles = StyleSheet.create({
     container: {
-        borderRadius: 5,
+        borderRadius: 50,
         overflow: "hidden",
         backgroundColor: colours.background,
+        position: 'absolute',
+        zIndex: 99,
+        bottom: 20,
+        right: 10,
     },
     view: {
         backgroundColor: colours.brightAccent,
-        paddingVertical: Dimensions.get('window').height > 600 ? 10 : 7,
-        paddingHorizontal: 15,
-        borderRadius: 5,
+        borderRadius: 50,
         borderWidth: 0,
+        padding: 15,
         margin: 2,
     },
     text: {
@@ -55,4 +58,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Button;
+export default BottomRightButton;
