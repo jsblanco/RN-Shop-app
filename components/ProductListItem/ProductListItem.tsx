@@ -1,31 +1,51 @@
-import React from 'react';
-import {Image, View} from 'react-native';
+import React, {useCallback} from 'react';
+import {Image, Platform, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
+import {Product} from "../../models/Product";
 import styles from './ProductListItem.styles';
 import Text from "../../components/basicComponents/Text/Text";
-import {Product} from "../../models/Product";
 import Button from "../basicComponents/Button/Button";
-import Card from "../basicComponents/Card/Card";
+import {Ionicons} from "@expo/vector-icons";
+import colours from "../../constants/colours";
+import {useDispatch} from "react-redux";
+import * as actions from '../../store/actions/products.actions'
 
-const ProductListItem = ({product}: { product: Product }) => {
+
+const ProductListItem = ({product, onClickDetails}: { product: Product, onClickDetails: () => void }) => {
+
+    const dispatch = useDispatch()
+    let CustomButton: any = TouchableOpacity;
+    if (Platform.OS === 'android' && Platform.Version >= 21) CustomButton = TouchableNativeFeedback;
+
+    const addToCart = useCallback(() => {
+        dispatch(actions.addToCart(product.id))
+    }, [product])
 
     return (
-        <Card style={styles.screen}>
-            <View style={styles.cardStyle}>
-                <View style={styles.imageContainer}>
-                    <Image source={{uri: product.imageUrl}} style={styles.image}/>
+        <View style={styles.screen}>
+            <CustomButton onPress={onClickDetails} useForeground={true}>
+                <View>
+                    <View style={styles.imageContainer}>
+                        <Image source={{uri: product.imageUrl}} style={styles.image}/>
+                    </View>
+                    <View style={styles.titleContainer}>
+                        <Text style={styles.title} numberOfLines={1}>{product.title}</Text>
+                        <Text style={styles.price}>{product.price.toFixed(2)} €</Text>
+                    </View>
+                    <View style={styles.actionsBar}>
+                        <Button buttonStyle={styles.button} textStyle={styles.buttonText}
+                                onPress={(onClickDetails)}>
+                            <Ionicons name={"search-outline"} size={16} color={colours.brightAccent}/>{'  '}
+                            View details
+                        </Button>
+                        <Button buttonStyle={styles.button} textStyle={styles.buttonText}
+                                onPress={addToCart}>
+                            <Ionicons name={"cart-outline"} size={16} color={colours.brightAccent}/>{'  '}
+                            Add to cart
+                        </Button>
+                    </View>
                 </View>
-                <View style={styles.titleContainer}>
-                    <Text style={styles.title} numberOfLines={1}>{product.title}</Text>
-                    <Text style={styles.price}>{product.price.toFixed(2)} €</Text>
-                </View>
-                <View style={styles.actionsBar}>
-                    <Button buttonStyle={styles.button} textStyle={styles.buttonText}
-                            onPress={() => console.log('Left button')}>View details</Button>
-                    <Button buttonStyle={styles.button} textStyle={styles.buttonText}
-                            onPress={() => console.log('Right button')}>Add to cart</Button>
-                </View>
-            </View>
-        </Card>
+            </CustomButton>
+        </View>
     )
 }
 

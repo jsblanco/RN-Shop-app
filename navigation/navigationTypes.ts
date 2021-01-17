@@ -1,5 +1,8 @@
 type ShoppingStackNavigation = {
     Catalogue: undefined;
+    ProductDetails: {
+        productId: string,
+    };
     ShoppingCart: undefined;
     OrderDetails: undefined;
 };
@@ -11,6 +14,8 @@ type OrderStackNavigation = {
 
 type ProductsStackNavigation = {
     Products: undefined;
-    ProductDetails: undefined;
+    ProductDetails: {
+        productId: string,
+    };
     EditProduct: undefined;
 };

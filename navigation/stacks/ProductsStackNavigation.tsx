@@ -12,7 +12,7 @@ export function ProductsStackNavigation() {
 
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Products"
             // @ts-ignore
             screenOptions={{
                 ...styles

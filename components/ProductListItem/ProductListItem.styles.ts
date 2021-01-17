@@ -1,4 +1,5 @@
 import {StyleSheet} from "react-native";
+import colours from "../../constants/colours";
 
 export default StyleSheet.create({
     screen: {
@@ -8,13 +9,14 @@ export default StyleSheet.create({
         marginVertical: 15,
         height: 300,
         borderRadius: 5,
+        overflow: 'hidden',
         backgroundColor: 'white',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 4,
         },
-        shadowOpacity: 0.32,
+        shadowOpacity: 0.3,
         shadowRadius: 8,
 
         elevation: 5,
@@ -53,8 +55,10 @@ export default StyleSheet.create({
     button: {
         marginBottom: 10,
         marginHorizontal: 10,
+        backgroundColor: 'white'
     },
     buttonText: {
-        fontSize: 12
+        fontSize: 12,
+        color: colours.brightAccent
     }
 })

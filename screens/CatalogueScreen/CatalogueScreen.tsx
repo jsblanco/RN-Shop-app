@@ -16,21 +16,31 @@ const CatalogueScreen = ({route, navigation}: Props) => {
 
     const products = useSelector((state: RootState) => state.products.availableProducts);
     const renderProductList = ({item}: { item: Product }) => {
-        return <ProductListItem product={item}/>
+        // @ts-ignore
+        return (
+            <ProductListItem
+                product={item}
+                onClickDetails={() => navigation.navigate('ProductDetails', {productId: item.id})}
+            />
+        )
     }
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerLeft: () => (
                 <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                    <Item
-                        title={'Menu'}
-                        iconName={'ios-menu'}
-                        onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}
-                    />
+                    <Item title={'Menu'} iconName={'ios-menu'}
+                          onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}/>
+                </HeaderButtons>
+            ),
+            headerRight: () => (
+                <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                    <Item title={'Add to cart'} iconName={'cart-outline'}
+                          onPress={() => navigation.navigate('ShoppingCart')}/>
                 </HeaderButtons>
             )
-        });
+        })
+        ;
     }, [navigation]);
 
     return (

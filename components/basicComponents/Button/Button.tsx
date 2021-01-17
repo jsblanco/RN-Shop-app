@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import colours from '../../../constants/colours';
 
-const Button = (props: { onPress: (...args: any[] ) => any | void, buttonStyle?: ViewStyle, textStyle?: TextStyle, children: React.ReactNode }) => {
+const Button = (props: { onPress: (...args: any[]) => any | void, buttonStyle?: ViewStyle, textStyle?: TextStyle, children: React.ReactNode }) => {
 
 
     let ButtonType: any = TouchableOpacity;
@@ -19,24 +19,31 @@ const Button = (props: { onPress: (...args: any[] ) => any | void, buttonStyle?:
     }
 
     return (
-        <ButtonType activeOpacity={0.6} onPress={props.onPress}>
-            <View style={{...styles.view, ...props.buttonStyle}}>
-                <Text style={{...styles.text, ...props.textStyle}}>
-                    {props.children}
-                </Text>
-            </View>
-        </ButtonType>
+        <View style={styles.container}>
+            <ButtonType activeOpacity={0.6} onPress={props.onPress}>
+                <View style={{...styles.view, ...props.buttonStyle}}>
+                    <Text style={{...styles.text, ...props.textStyle}}>
+                        {props.children}
+                    </Text>
+                </View>
+            </ButtonType>
+        </View>
     )
 
 }
 
 const styles = StyleSheet.create({
+    container: {
+        borderRadius: 5,
+        overflow: "hidden",
+        backgroundColor: colours.background,
+    },
     view: {
         backgroundColor: colours.brightAccent,
         paddingVertical: Dimensions.get('window').height > 600 ? 10 : 7,
         paddingHorizontal: 15,
+        borderRadius: 5,
         borderWidth: 0,
-        borderRadius: 10,
         margin: 2,
 
     },

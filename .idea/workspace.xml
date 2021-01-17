@@ -5,27 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ac7fc9e-7ef2-4ebe-8006-94167965fa7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/screens/CatalogueScreen/CatalogueScreen.styles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/CatalogueScreen/CatalogueScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
-    <list id="6c18175b-5a33-4a9d-b20d-3727c0c43362" name="Added Redux basics and created main Products screen + product list component" comment="">
-      <change afterPath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.styles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/dummyData.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Product.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/actions/products.actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/constants/products.constants.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/reducers/products.reducers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/basicComponents/Button/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/basicComponents/Button/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/dummyData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/dummyData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/navigationTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/navigationTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/stacks/ProductsStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/ProductsStackNavigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/navigation/stacks/ShoppingStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/ShoppingStackNavigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CatalogueScreen/CatalogueScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CatalogueScreen/CatalogueScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ProductDetailsScreen/ProductDetailsScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProductDetailsScreen/ProductDetailsScreen.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ProductDetailsScreen/ProductDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProductDetailsScreen/ProductDetailsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/actions/products.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/actions/products.actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/constants/products.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/constants/products.constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/reducers/products.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/reducers/products.reducers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,21 +50,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/.idea/workspace.xml">
-      <ranges>
-        <range start1="6" end1="8" start2="6" end2="16" changelist="7ac7fc9e-7ef2-4ebe-8006-94167965fa7f" />
-        <range start1="9" end1="12" start2="17" end2="19" changelist="6c18175b-5a33-4a9d-b20d-3727c0c43362" />
-        <range start1="13" end1="18" start2="20" end2="23" changelist="7ac7fc9e-7ef2-4ebe-8006-94167965fa7f" />
-        <range start1="28" end1="28" start2="33" end2="36" changelist="6c18175b-5a33-4a9d-b20d-3727c0c43362" />
-        <range start1="73" end1="73" start2="81" end2="82" changelist="6c18175b-5a33-4a9d-b20d-3727c0c43362" />
-        <range start1="87" end1="88" start2="96" end2="97" changelist="6c18175b-5a33-4a9d-b20d-3727c0c43362" />
-        <range start1="103" end1="104" start2="112" end2="120" changelist="6c18175b-5a33-4a9d-b20d-3727c0c43362" />
-        <range start1="124" end1="125" start2="140" end2="142" changelist="6c18175b-5a33-4a9d-b20d-3727c0c43362" />
-        <range start1="143" end1="143" start2="160" end2="166" changelist="6c18175b-5a33-4a9d-b20d-3727c0c43362" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectId" id="1n9bhTCB96ffzLKkNwd1PwvpfuM" />
   <component name="ProjectLevelVcsManager">
@@ -185,6 +165,12 @@
           <line>13</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/screens/CatalogueScreen/CatalogueScreen.tsx</url>
+          <line>27</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
