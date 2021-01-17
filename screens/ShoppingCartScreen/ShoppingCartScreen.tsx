@@ -63,7 +63,7 @@ const ShoppingCartScreen = ({route, navigation}: Props) => {
                 keyExtractor={item => item.product.id}
             />
             <BottomRightButton onPress={emptyCart}>
-                <FontAwesomeIcon icon={ faTrashAlt } color={'white'} />
+                <FontAwesomeIcon icon={ faTrashAlt } color={'white'} size={22}/>
             </BottomRightButton>
         </View>
     )

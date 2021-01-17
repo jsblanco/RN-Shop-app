@@ -4,6 +4,7 @@ import OrdersScreen from "../../screens/OrdersScreen/OrdersScreen";
 import styles from './stack.styles'
 import colours from "../../constants/colours";
 import OrderDetailsScreen from "../../screens/OrderDetailsScreen/OrderDetailsScreen";
+import ProductDetailsScreen from "../../screens/ProductDetailsScreen/ProductDetailsScreen";
 
 const Stack = createStackNavigator();
 export function OrdersStackNavigation() {
@@ -11,7 +12,7 @@ export function OrdersStackNavigation() {
 
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Orders"
             // @ts-ignore
             screenOptions={{
                 ...styles
@@ -25,6 +26,11 @@ export function OrdersStackNavigation() {
             <Stack.Screen
                 name="OrderDetails"
                 component={OrderDetailsScreen}
+                options={{}}
+            />
+            <Stack.Screen
+                name="ProductDetails"
+                component={ProductDetailsScreen}
                 options={{}}
             />
         </Stack.Navigator>

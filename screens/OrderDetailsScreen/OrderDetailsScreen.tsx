@@ -11,14 +11,20 @@ import Button from "../../components/basicComponents/Button/Button";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import HeaderButton from "../../components/basicComponents/HeaderButton/HeaderButton";
 import {DrawerActions} from "@react-navigation/native";
+import {Order} from "../../models/Order";
 
 type Props = StackScreenProps<ShoppingStackNavigation, 'OrderDetails'>;
 
 
 const OrderDetailsScreen = ({route, navigation}: Props) => {
 
-    const justOrdered = !!route.params.justOrdered
-    const orderDetails = useSelector((state: RootState) => state.orders.orders[state.orders.orders.length - 1]);
+    const {justOrdered, orderId} = route.params
+
+    let orderDetails: Order | undefined
+    orderId
+        ? orderDetails = useSelector((state: RootState) => state.orders.orders.find(order => order.id === orderId))
+        : orderDetails = useSelector((state: RootState) => state.orders.orders[state.orders.orders.length - 1])
+
     if (!orderDetails) {
         return (
             <View style={styles.screen}>
@@ -45,7 +51,8 @@ const OrderDetailsScreen = ({route, navigation}: Props) => {
     }, [navigation]);
 
     const title = justOrdered ? 'Your order was completed successfully!' : 'Order details'
-    const callToAction = justOrdered ? <Button onPress={navigation.popToTop}>Return to our catalogue</Button> : undefined;
+    const callToAction = justOrdered ?
+        <Button onPress={navigation.popToTop}>Return to our catalogue</Button> : undefined;
 
     return (
         <View style={styles.screen}>

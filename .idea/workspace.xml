@@ -6,22 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="7ac7fc9e-7ef2-4ebe-8006-94167965fa7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CartItem/CartItem.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/CartItem/CartItem.styles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/CartItem/CartItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CartItem/CartItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/basicComponents/Button/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/basicComponents/Button/Button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/basicComponents/HeaderButton/HeaderButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/basicComponents/HeaderButton/HeaderButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/Order.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/navigation/navigationTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/navigationTypes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/OrderDetailsScreen/OrderDetailsScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrderDetailsScreen/OrderDetailsScreen.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/stacks/OrdersStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/OrdersStackNavigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/OrderDetailsScreen/OrderDetailsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrderDetailsScreen/OrderDetailsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.styles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.styles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/actions/products.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/actions/products.actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/constants/products.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/constants/products.constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/reducers/products.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/reducers/products.reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +25,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
-        <option value="React Native Ts component.tsx.child.0" />
-        <option value="React Native Ts component" />
         <option value="Redux reducer.ts.child.0" />
         <option value="Redux reducer.ts.child.1" />
         <option value="Redux reducer" />
         <option value="TypeScript File" />
+        <option value="React Native Ts component.tsx.child.0" />
+        <option value="React Native Ts component" />
       </list>
     </option>
   </component>
@@ -118,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610815714892</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added orders redux workflow + clearing cart button">
+      <created>1610905277205</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1610905277205</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,7 +142,8 @@
     <MESSAGE value="Populated basic navigation screens" />
     <MESSAGE value="Added Redux basics and created main Products screen + product list component" />
     <MESSAGE value="Completed shopping cart + cart items styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed shopping cart + cart items styling" />
+    <MESSAGE value="Added orders redux workflow + clearing cart button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added orders redux workflow + clearing cart button" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -164,13 +165,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx</url>
-          <line>15</line>
+          <line>23</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.tsx</url>
-          <line>20</line>
+          <line>21</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
