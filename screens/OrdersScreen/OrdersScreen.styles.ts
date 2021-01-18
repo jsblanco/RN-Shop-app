@@ -7,6 +7,11 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
     },
+    noOrders: {
+        paddingTop: 50,
+        textAlign: 'center',
+        fontFamily: 'openSansBold'
+    },
     flatList: {
         width: '100%',
     },

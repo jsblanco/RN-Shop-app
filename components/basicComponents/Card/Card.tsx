@@ -14,7 +14,6 @@ const Card = (props: { style?: ViewStyle, children: React.ReactNode }) => {
 const styles = StyleSheet.create({
     card: {
         borderRadius: 10,
-        padding: Dimensions.get('window').height > 600 ? 20 : 15,
         shadowColor: 'black',
         shadowOffset: {
             width: 2,
@@ -22,7 +21,7 @@ const styles = StyleSheet.create({
         },
         shadowRadius: 15,
         shadowOpacity: 0.26,
-        elevation: 25,
+        elevation: 9,
         backgroundColor: colours.background || 'white'
     }
 });

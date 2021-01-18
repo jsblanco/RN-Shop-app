@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import {Alert, FlatList, View} from 'react-native';
 import styles from './ProductsScreen.styles';
 import {StackScreenProps} from "@react-navigation/stack";
 import {useDispatch, useSelector} from "react-redux";
@@ -23,18 +23,25 @@ const ProductsScreen = ({route, navigation}: Props) => {
         const onEdit = () => navigation.navigate('EditProduct', {productId: item.id})
         const onDelete = () => dispatch(productActions.deleteProduct(item.id))
 
-        return <ProductListItem product={item}
-                                onSelect={onSelect}>
+        const deleteHandler = () => Alert.alert(
+            'Are you sure?',
+            'This action cannot be undone. Do you still want to delete this product?',
+            [
+                {text: 'Cancel', style: 'default'},
+                {text: 'Delete product', style: 'destructive', onPress: onDelete}
+            ]
+        )
 
+        return <ProductListItem product={item} onSelect={onSelect}>
             <Button buttonStyle={styles.button} textStyle={styles.buttonText}
-                    onPress={(onEdit)}>
+                    onPress={onEdit}>
                 <Ionicons name={"create-outline"} size={16} color={colours.brightAccent}/>{'  '}
                 Edit product
             </Button>
             <Button buttonStyle={styles.button} textStyle={styles.buttonText}
-                    onPress={(onDelete)}>
+                    onPress={deleteHandler}>
                 <Ionicons name={"trash-outline"} size={16} color={colours.brightAccent}/>{'  '}
-               Delete product
+                Delete product
             </Button>
         </ProductListItem>
     }

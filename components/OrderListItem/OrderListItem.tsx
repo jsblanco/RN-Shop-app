@@ -24,7 +24,7 @@ const OrderListItem = ({order}: { order: Order }) => {
                         <Text>Ordered on: {date}</Text>
                     </View>
                     <View style={styles.orderPrice}>
-                        <Text>Order price:</Text>
+                        <Text>Price:</Text>
                         <Text style={styles.bold}>{order.price} €</Text>
                     </View>
                 </View>

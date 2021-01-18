@@ -17,7 +17,7 @@ const OrdersScreen = ({route, navigation}: Props) => {
         return <OrderListItem order={item} />
     }
 
-    if (orders.length===0) return <Text>You have made no orders</Text>;
+    if (orders.length===0) return <Text style={styles.noOrders}>You have made no orders</Text>;
 
     return (
         <View style={styles.screen}>

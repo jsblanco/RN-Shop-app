@@ -18,14 +18,14 @@ const initialState: StateType = {
 const productsReducer = (state: StateType = initialState, {type, payload}: { type: string, payload?: any }) => {
     console.log(payload)
     let product: Product | undefined;
-    let productCartIndex: number, updatedCart: { product: Product, amount: number }[];
+    let productIndex: number, updatedCart: { product: Product, amount: number }[];
     switch (type) {
         case constants.ADD_TO_CART:
             if (state.cart.length > 0) {
-                productCartIndex = state.cart.findIndex(item => item.product.id === payload.productId);
-                if (productCartIndex >= 0) {
+                productIndex = state.cart.findIndex(item => item.product.id === payload.productId);
+                if (productIndex >= 0) {
                     updatedCart = [...state.cart];
-                    updatedCart[productCartIndex].amount++;
+                    updatedCart[productIndex].amount++;
                     return {...state, cart: updatedCart}
                 }
             }
@@ -38,12 +38,12 @@ const productsReducer = (state: StateType = initialState, {type, payload}: { typ
             }
             return {...state};
         case constants.REMOVE_FROM_CART:
-            productCartIndex = state.cart.findIndex(item => item.product.id === payload.productId);
-            if (productCartIndex < 0) return {...state};
+            productIndex = state.cart.findIndex(item => item.product.id === payload.productId);
+            if (productIndex < 0) return {...state};
             updatedCart = [...state.cart];
-            (updatedCart[productCartIndex].amount > 1)
-                ? updatedCart[productCartIndex].amount--
-                : updatedCart.splice(productCartIndex, 1);
+            (updatedCart[productIndex].amount > 1)
+                ? updatedCart[productIndex].amount--
+                : updatedCart.splice(productIndex, 1);
             return {
                 ...state,
                 cart: updatedCart
@@ -59,14 +59,15 @@ const productsReducer = (state: StateType = initialState, {type, payload}: { typ
                 userProducts: state.userProducts.filter(product => product.id !== payload.productId),
             };
         case constants.CREATE_PRODUCT:
-            product = new Product(new Date().getTime().toString(), 'u3', payload.title, payload.description, payload.imageUrl, (+payload.price-0.01))
+            product = new Product(new Date().getTime().toString(), 'u3', payload.title, payload.description, payload.imageUrl, (+payload.price - 0.01))
             return {
                 ...state,
                 availableProducts: [product, ...state.availableProducts],
                 userProducts: [product, ...state.userProducts]
             }
         case constants.UPDATE_PRODUCT:
-            product = new Product(payload.id, 'u3', payload.title, payload.description, payload.imageUrl, (+payload.price-0.01))
+            productIndex = state.userProducts.findIndex(product => product.id === payload.id);
+            product = new Product(payload.id, state.userProducts[productIndex].id, payload.title, payload.description, payload.imageUrl, state.userProducts[productIndex].price)
             return {
                 ...state,
                 availableProducts: [product, ...state.availableProducts.filter(product => product.id !== payload.id)],

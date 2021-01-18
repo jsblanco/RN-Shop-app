@@ -25,10 +25,10 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
 
     const saveChanges = useCallback(() => {
         !!editingProduct
-            ? dispatch(productActions.updateProduct(editingProduct.id, title, description, price, imageUrl))
+            ? dispatch(productActions.updateProduct(editingProduct.id, title, description, imageUrl))
             : dispatch(productActions.createProduct(title, description, price, imageUrl));
         navigation.navigate('Products')
-    }, [editingProduct, price, title, description, imageUrl])
+    }, [dispatch, editingProduct, price, title, description, imageUrl])
 
     const priceInputHandler = useCallback((inputValue: string) => {
         setPrice(inputValue.replace(/[^0-9]/g, ''))

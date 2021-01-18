@@ -12,14 +12,14 @@ export default StyleSheet.create({
         marginHorizontal: 20,
         marginVertical: 10,
         borderRadius: 5,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 8,
-        elevation: 5,
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 4,
+        // },
+        // shadowOpacity: 0.3,
+        // shadowRadius: 8,
+        // elevation: 5,
     },
     container: {
       flex: 1,

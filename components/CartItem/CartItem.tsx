@@ -7,6 +7,7 @@ import * as actions from "../../store/actions/products.actions";
 import {useDispatch} from "react-redux";
 import {Product} from "../../models/Product";
 import {useNavigation} from "@react-navigation/native";
+import Card from "../basicComponents/Card/Card";
 
 type CartItemProps = { item: { product: Product, amount: number }, hideIcons?: boolean };
 
@@ -25,7 +26,7 @@ const CartItem = ({item: {product, amount}, hideIcons}: CartItemProps) => {
     }
 
     return (
-        <View style={styles.screen}>
+        <Card style={styles.screen}>
             <CustomButton onPress={seeOrderDetails} useForeground={true}>
                 <View style={styles.container}>
                     {/*<View style={styles.imageRow}>*/}
@@ -56,7 +57,7 @@ const CartItem = ({item: {product, amount}, hideIcons}: CartItemProps) => {
                     </View>
                 </View>
             </CustomButton>
-        </View>
+        </Card>
     )
 }
 

@@ -3,6 +3,7 @@ import {Image, Platform, TouchableNativeFeedback, TouchableOpacity, View} from '
 import {Product} from "../../models/Product";
 import styles from './ProductListItem.styles';
 import Text from "../../components/basicComponents/Text/Text";
+import Card from "../basicComponents/Card/Card";
 
 
 const ProductListItem = ({product, onSelect, children}: { product: Product, onSelect: () => void, children?: React.ReactChild | React.ReactChild[] }) => {
@@ -12,7 +13,7 @@ const ProductListItem = ({product, onSelect, children}: { product: Product, onSe
 
 
     return (
-        <View style={styles.screen}>
+        <Card style={styles.screen}>
             <CustomButton onPress={onSelect} useForeground={true}>
                 <View>
                     <View style={styles.imageContainer}>
@@ -27,7 +28,7 @@ const ProductListItem = ({product, onSelect, children}: { product: Product, onSe
                     </View>
                 </View>
             </CustomButton>
-        </View>
+        </Card>
     )
 }
 

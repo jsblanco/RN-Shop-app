@@ -6,16 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="7ac7fc9e-7ef2-4ebe-8006-94167965fa7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/basicComponents/Input/Input.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/navigation/RootDrawerNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/RootDrawerNavigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navigation/navigationTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/navigationTypes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navigation/stacks/ProductsStackNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/stacks/ProductsStackNavigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CartItem/CartItem.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/CartItem/CartItem.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CartItem/CartItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CartItem/CartItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/OrderListItem/OrderListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/OrderListItem/OrderListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/basicComponents/Card/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/basicComponents/Card/Card.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.styles.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ShoppingCartScreen/ShoppingCartScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ProductsScreen/ProductsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProductsScreen/ProductsScreen.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/store/actions/products.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/actions/products.actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/constants/products.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/constants/products.constants.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/store/reducers/products.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/reducers/products.reducers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -127,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610921426401</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Created Redux workflow for editing and creating products">
+      <created>1610926532646</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610926532646</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

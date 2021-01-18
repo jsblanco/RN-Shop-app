@@ -27,14 +27,13 @@ export const deleteProduct = (productId: string) => {
     }
 }
 
-export const updateProduct = (id: string, title: string, description: string, price: string, imageUrl: string) => {
+export const updateProduct = (id: string, title: string, description: string, imageUrl: string) => {
     return {
         type: constants.UPDATE_PRODUCT,
         payload: {
             id,
             title,
             description,
-            price,
             imageUrl
         }
     }
