@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7ac7fc9e-7ef2-4ebe-8006-94167965fa7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CartItem/CartItem.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/CartItem/CartItem.styles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CartItem/CartItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CartItem/CartItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/OrderListItem/OrderListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/OrderListItem/OrderListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.styles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ProductListItem/ProductListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/basicComponents/Card/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/basicComponents/Card/Card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.styles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/ProductsScreen/ProductsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProductsScreen/ProductsScreen.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/actions/products.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/actions/products.actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/reducers/products.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/reducers/products.reducers.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +52,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/components/basicComponents" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
@@ -92,6 +82,7 @@
       <workItem from="1610806763073" duration="679000" />
       <workItem from="1610807785631" duration="1824000" />
       <workItem from="1610810671667" duration="13066000" />
+      <workItem from="1611070279296" duration="5938000" />
     </task>
     <task id="LOCAL-00001" summary="Created base project and added navigation base">
       <created>1610810696838</created>
@@ -174,12 +165,10 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/screens/OrdersScreen/OrdersScreen.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/screens/OrderDetailsScreen/OrderDetailsScreen.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
