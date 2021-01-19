@@ -9,9 +9,10 @@ import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import HeaderButton from "../../components/basicComponents/HeaderButton/HeaderButton";
 import Button from "../../components/basicComponents/Button/Button";
 import * as productActions from '../../store/actions/products.actions';
+import FormControl from "../../components/FormControl/FormControl";
 
 type Props = StackScreenProps<ProductsStackNavigation, 'EditProduct'>;
-type reducerStateType = {
+type ReducerStateType = {
     inputValues: {
         title: string,
         description: string,
@@ -26,11 +27,36 @@ type reducerStateType = {
     },
     formIsValid: boolean
 }
+type ActionsType = {
+    type: string,
+    value: string,
+    isValid: boolean,
+    input: string,
+}
 
 const FORM_UPDATE = 'FORM_UPDATE';
-const formReducer = (state: reducerStateType, action: any) => {
-    if (action.type === FORM_UPDATE) {
-
+const formReducer = (state: ReducerStateType, a: ActionsType) => {
+    let updatedValues, updatedValidities;
+    let updatedFormIsValid = true;
+    if (a.type === FORM_UPDATE) {
+        updatedValues = {
+            ...state.inputValues,
+            [a.input]: a.value,
+        }
+        updatedValidities = {
+            ...state.inputValidities,
+            [a.input]: a.isValid,
+        }
+        for (let key in updatedValidities) {
+            // @ts-ignore
+            updatedFormIsValid = updatedFormIsValid && updatedValidities[key]
+        }
+        return {
+            ...state,
+            inputValues: updatedValues,
+            inputValidities: updatedValidities,
+            formIsValid: updatedFormIsValid
+        };
     }
     return {...state}
 }
@@ -39,6 +65,7 @@ const formReducer = (state: reducerStateType, action: any) => {
 const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) => {
 
     const editedProduct = useSelector((state: RootState) => state.products.userProducts.find(product => product.id === productId))
+    const [formTouched, setFormTouched]= useState(false)
     const dispatch = useDispatch();
 
 
@@ -58,55 +85,28 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
         formIsValid: false
     })
 
-    /*
-    const [title, setTitle] = useState(!!editedProduct ? editedProduct.title : '')
-    const [price, setPrice] = useState(!!editedProduct ? '' + editedProduct.price : '')
-    const [imageUrl, setImageUrl] = useState(!!editedProduct ? editedProduct.imageUrl : '')
-    const [description, setDescription] = useState(!!editedProduct ? editedProduct.description : '')
-    const [titleIsValid, setTitleIsValid] = useState(!!editedProduct && !!editedProduct.title.trim())
-    const [descriptionIsValid, setDescriptionIsValid] = useState(!!editedProduct && !!editedProduct.description.trim())
-    const [attemptedToSubmit, setAttemptedToSubmit]= useState(false)
-    */
-
     const saveChanges = useCallback(() => {
-        /*
-        if (!titleIsValid || !descriptionIsValid) {
-            setAttemptedToSubmit(true);
+        if (!formTouched) setFormTouched(true)
+        if (!formState.formIsValid) {
             Alert.alert('Missing inputs', 'Please input all product data, then press Submit', [{text: 'Ok'}])
             return
         }
-         */
-
         const {title, description, price, imageUrl} = formState.inputValues;
         !!editedProduct
             ? dispatch(productActions.updateProduct(editedProduct.id, title, description, imageUrl))
             : dispatch(productActions.createProduct(title, description, price, imageUrl));
         navigation.navigate('Products')
-    }, [dispatch, editedProduct, formState, /* titleIsValid, descriptionIsValid */])
+    }, [dispatch, editedProduct, formState])
 
-    /*
-    const stringInputHandler = (input: string, validatorSetter: (e: boolean) => void, setter: (e: string) => void) => {
-        if (input.trim().length === 0) return validatorSetter(false)
-        validatorSetter(true);
-        setter(input);
-    }
-
-    const priceInputHandler = useCallback((inputValue: string) => {
-        setPrice(inputValue.replace(/[^0-9]/g, ''))
-    }, [])
-    */
-
-    const stringInputHandler = (key: 'title' | 'description' | 'imageUrl' | 'price', value: string) => {
+    const stringInputHandler = (key: string, value: string) => {
         let isValid = false;
-        if (value.trim().length === 0) {
-            isValid = true;
-        }
+        if (value.trim().length !== 0) isValid = true;
+
         formDispatch({
             type: FORM_UPDATE,
             value: value,
-            isValid,
-            input: 'title'
-
+            isValid: isValid,
+            input: key
         })
     }
 
@@ -125,47 +125,37 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
     return (
         <ScrollView>
             <View style={styles.form}>
-                <View style={styles.formControl}>
-                    <Text style={styles.label}>Product name:</Text>
-                    <TextInput
-                        style={styles.input}
-                        value={title}
-                        onChangeText={stringInputHandler.bind(this, 'title')}
-                        keyboardType={"default"}
-                        autoCapitalize={"sentences"}
-                        autoCorrect
-                    />
-                </View>
-                {/*{(attemptedToSubmit && !titleIsValid) && <Text style={{color: 'tomato'}}>Please input a valid title</Text>}*/}
-
-                <View style={styles.formControl}>
-                    <Text style={styles.label}>Description:</Text>
-                    <TextInput
-                        style={styles.input}
-                        value={description}
-                        onChangeText={stringInputHandler.bind(this, 'description')}
-                        multiline
-                    />
-
-                    {/*{(attemptedToSubmit && !descriptionIsValid) && <Text style={{color: 'tomato'}}>Please input a valid description</Text>}*/}
-                </View>
-                {!editedProduct && <View style={styles.formControl}>
-                    <Text style={styles.label}>Price:</Text>
-                    <TextInput
-                        style={styles.input}
-                        value={price}
-                        keyboardType={"decimal-pad"}
-                        onChangeText={stringInputHandler.bind(this, 'price')}
-                    />
-                </View>}
-                <View style={styles.formControl}>
-                    <Text style={styles.label}>Product image:</Text>
-                    <TextInput
-                        style={styles.input}
-                        value={imageUrl}
-                        onChangeText={stringInputHandler.bind(this, 'imageUrl')}
-                    />
-                </View>
+                <FormControl
+                    label={'product name'}
+                    formTouched={formTouched}
+                    keyName={'title'}
+                    value={formState.inputValues.title}
+                    inputHandler={stringInputHandler}
+                />
+                <FormControl
+                    label={'product description'}
+                    formTouched={formTouched}
+                    keyName={'description'}
+                    multiline={true}
+                    value={formState.inputValues.description}
+                    inputHandler={stringInputHandler}
+                />
+                <FormControl
+                    label={'image URL'}
+                    formTouched={formTouched}
+                    keyName={'imageUrl'}
+                    value={formState.inputValues.imageUrl}
+                    inputHandler={stringInputHandler}
+                />
+                {!editedProduct &&
+                <FormControl
+                    label={'Price'}
+                    formTouched={formTouched}
+                    keyName={'price'}
+                    value={formState.inputValues.price}
+                    inputHandler={stringInputHandler}
+                    keyboardType={"decimal-pad"}
+                />}
                 <View style={styles.actionRow}>
                     <Button onPress={saveChanges}>{!!editedProduct ? 'Update product' : 'Create product'}</Button>
                 </View>
