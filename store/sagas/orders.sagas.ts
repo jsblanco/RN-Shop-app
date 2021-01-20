@@ -9,8 +9,8 @@ import {
 function* getOrdersByUserIdEffect({payload}: { type: string, payload: string }) {
     try {
         yield call(fetchOrdersRequest)
-        const tweets = yield call(fetchUserOrders, payload);
-        yield put(fetchOrdersSuccess(tweets));
+      //  const orders = []// yield call(fetchUserOrders, payload);
+      //  yield put(fetchOrdersSuccess(orders));
     } catch (e) {
         console.error(e);
         yield put(fetchOrdersFailure(e));

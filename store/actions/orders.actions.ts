@@ -26,8 +26,9 @@ export const fetchOrdersSuccess = (payload: Order[]) => {
     }
 }
 
-export const fetchOrdersFailure = () => {
+export const fetchOrdersFailure = (e: any) => {
     return {
         type: constants.FETCH_ORDERS_FAILURE,
+        payload: e
     }
 }

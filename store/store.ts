@@ -3,6 +3,7 @@ import productsReducer from "./reducers/products.reducers";
 import ordersReducer from "./reducers/orders.reducer";
 import createSagaMiddleware from "redux-saga";
 import {all} from "redux-saga/effects";
+import productSagas from "./sagas/products.sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
@@ -15,7 +16,7 @@ export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 function* rootSaga() {
     yield all([
-        //    tweetsSaga()
+        productSagas()
     ]);
 }
 

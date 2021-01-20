@@ -57,8 +57,8 @@ const productsReducer = (state: StateType = initialState, {type, payload}: { typ
                 availableProducts: state.availableProducts.filter(product => product.id !== payload.productId),
                 userProducts: state.userProducts.filter(product => product.id !== payload.productId),
             };
-        case constants.CREATE_PRODUCT:
-            product = new Product(new Date().getTime().toString(), 'u3', payload.title, payload.description, payload.imageUrl, (+payload.price - 0.01))
+        case constants.CREATE_PRODUCT_SUCCESS:
+            product = new Product(payload.id, 'u3', payload.title, payload.description, payload.imageUrl, (+payload.price))
             return {
                 ...state,
                 availableProducts: [product, ...state.availableProducts],

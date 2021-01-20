@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ac7fc9e-7ef2-4ebe-8006-94167965fa7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/store/api/products.queries.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.styles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/EditProductsScreen/EditProductsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/orders.queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/api/orders.queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/products.queries.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/actions/orders.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/actions/orders.actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/actions/products.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/actions/products.actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/constants/products.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/constants/products.constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/reducers/products.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/reducers/products.reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/sagas/orders.sagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/sagas/orders.sagas.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/sagas/products.sagas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/sagas/products.sagas.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,12 +26,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
-        <option value="Redux reducer.ts.child.0" />
-        <option value="Redux reducer.ts.child.1" />
-        <option value="Redux reducer" />
-        <option value="TypeScript File" />
         <option value="React Native Ts component.tsx.child.0" />
         <option value="React Native Ts component" />
+        <option value="Redux reducer" />
+        <option value="Redux reducer.ts.child.0" />
+        <option value="Redux reducer.ts.child.1" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -66,6 +74,7 @@
       <recent name="$PROJECT_DIR$/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/store" />
       <recent name="$PROJECT_DIR$/store/constants" />
       <recent name="$PROJECT_DIR$/screens/Shop" />
     </key>
@@ -129,7 +138,21 @@
       <option name="project" value="LOCAL" />
       <updated>1610926532646</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Started implementing Redux Sagas">
+      <created>1611181682724</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1611181682724</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Started implementing Redux Sagas">
+      <created>1611181707036</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1611181707036</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,14 +179,15 @@
     <MESSAGE value="Added orders redux workflow + clearing cart button" />
     <MESSAGE value="Started building Products section" />
     <MESSAGE value="Created Redux workflow for editing and creating products" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Redux workflow for editing and creating products" />
+    <MESSAGE value="Started implementing Redux Sagas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started implementing Redux Sagas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/components/FormControl/FormControl.tsx</url>
-          <line>21</line>
+          <line>10</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="5" />
         </line-breakpoint>

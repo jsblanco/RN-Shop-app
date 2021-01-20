@@ -1,26 +1,22 @@
 import {takeLatest, call, put} from "redux-saga/effects";
 import * as constants from "../constants/products.constants";
-//import { getTweetsByUsername, getTweetsByKeyword } from "../utils/server-queries";
-import {
-    fetchOrdersFailure,
-    fetchOrdersRequest, fetchOrdersSuccess
-} from "../actions/orders.actions";
+import {createProductInDb} from "../api/products.queries"
+import {createProductFailure, createProductSuccess} from "../actions/products.actions";
 
-function* createProductEffect({payload}: { type: string, payload: string }) {
+function* createProductEffect({payload}: { type: string, payload: any }) {
     try {
-        // yield call(fetchOrdersRequest)
-        const tweets = yield call(createProductInDb, payload);
-        yield put(fetchOrdersSuccess(tweets));
+        const productId = yield call(createProductInDb, payload);
+        yield put(createProductSuccess({...payload, id: productId}));
     } catch (e) {
         console.error(e);
-        yield put(fetchOrdersFailure(e));
+        yield put(createProductFailure(e));
     }
 }
 
 
-function* orderSagas() {
-    yield takeLatest(constants.CREATE_PRODUCT, getOrdersByUserIdEffect);
+function* productSagas() {
+    yield takeLatest(constants.CREATE_PRODUCT, createProductEffect);
 }
 
-export default orderSagas;
+export default productSagas;
 
