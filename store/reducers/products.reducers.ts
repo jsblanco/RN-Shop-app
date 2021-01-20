@@ -16,7 +16,6 @@ const initialState: StateType = {
 }
 
 const productsReducer = (state: StateType = initialState, {type, payload}: { type: string, payload?: any }) => {
-    console.log(payload)
     let product: Product | undefined;
     let productIndex: number, updatedCart: { product: Product, amount: number }[];
     switch (type) {

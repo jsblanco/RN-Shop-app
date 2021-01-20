@@ -50,12 +50,6 @@ const formReducer = (state: ReducerStateType, a: ActionsType) => {
             // @ts-ignore
             updatedFormIsValid = updatedFormIsValid && updatedValidities[key]
         }
-        console.log({
-            ...state,
-            inputValues: updatedValues,
-            inputValidities: updatedValidities,
-            formIsValid: updatedFormIsValid
-        })
         return {
             ...state,
             inputValues: updatedValues,
@@ -104,7 +98,6 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
     }, [dispatch, editedProduct, formState])
 
     const stringInputHandler = useCallback((key: string, value: string, isValid: boolean) => {
-        console.log('dispatched')
         formDispatch({
             type: FORM_UPDATE,
             value: value,
