@@ -1,7 +1,6 @@
 import React, {useCallback, useState, useReducer} from 'react';
-import {Alert, Platform, ScrollView, TextInput, View} from 'react-native';
+import {Alert, Platform, ScrollView, View} from 'react-native';
 import styles from './EditProductsScreen.styles';
-import Text from "../../components/basicComponents/Text/Text";
 import {StackScreenProps} from "@react-navigation/stack";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
@@ -51,6 +50,12 @@ const formReducer = (state: ReducerStateType, a: ActionsType) => {
             // @ts-ignore
             updatedFormIsValid = updatedFormIsValid && updatedValidities[key]
         }
+        console.log({
+            ...state,
+            inputValues: updatedValues,
+            inputValidities: updatedValidities,
+            formIsValid: updatedFormIsValid
+        })
         return {
             ...state,
             inputValues: updatedValues,
@@ -65,7 +70,7 @@ const formReducer = (state: ReducerStateType, a: ActionsType) => {
 const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) => {
 
     const editedProduct = useSelector((state: RootState) => state.products.userProducts.find(product => product.id === productId))
-    const [formTouched, setFormTouched]= useState(false)
+    const [formTouched, setFormTouched] = useState(false)
     const dispatch = useDispatch();
 
 
@@ -98,17 +103,16 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
         navigation.navigate('Products')
     }, [dispatch, editedProduct, formState])
 
-    const stringInputHandler = (key: string, value: string) => {
-        let isValid = false;
-        if (value.trim().length !== 0) isValid = true;
-
+    const stringInputHandler = useCallback((key: string, value: string, isValid: boolean) => {
+        console.log('dispatched')
         formDispatch({
             type: FORM_UPDATE,
             value: value,
             isValid: isValid,
             input: key
         })
-    }
+    }, [formDispatch])
+
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -126,35 +130,43 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
         <ScrollView>
             <View style={styles.form}>
                 <FormControl
+                    keyName={'title'}
                     label={'product name'}
                     formTouched={formTouched}
-                    keyName={'title'}
                     value={formState.inputValues.title}
+                    isValid={formState.inputValidities.title}
                     inputHandler={stringInputHandler}
+                    required={true}
                 />
                 <FormControl
-                    label={'product description'}
-                    formTouched={formTouched}
                     keyName={'description'}
-                    multiline={true}
+                    formTouched={formTouched}
+                    label={'product description'}
                     value={formState.inputValues.description}
+                    isValid={formState.inputValidities.description}
                     inputHandler={stringInputHandler}
+                    multiline={true}
+                    required={true}
                 />
                 <FormControl
+                    keyName={'imageUrl'}
                     label={'image URL'}
                     formTouched={formTouched}
-                    keyName={'imageUrl'}
                     value={formState.inputValues.imageUrl}
+                    isValid={formState.inputValidities.imageUrl}
                     inputHandler={stringInputHandler}
+                    required={true}
                 />
                 {!editedProduct &&
                 <FormControl
                     label={'Price'}
-                    formTouched={formTouched}
                     keyName={'price'}
                     value={formState.inputValues.price}
+                    isValid={formState.inputValidities.price}
+                    formTouched={formTouched}
                     inputHandler={stringInputHandler}
                     keyboardType={"decimal-pad"}
+                    required={true}
                 />}
                 <View style={styles.actionRow}>
                     <Button onPress={saveChanges}>{!!editedProduct ? 'Update product' : 'Create product'}</Button>
