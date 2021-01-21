@@ -9,6 +9,7 @@ import HeaderButton from "../../components/basicComponents/HeaderButton/HeaderBu
 import Button from "../../components/basicComponents/Button/Button";
 import * as productActions from '../../store/actions/products.actions';
 import FormControl from "../../components/FormControl/FormControl";
+import {Product} from "../../models/Product/Product";
 
 type Props = StackScreenProps<ProductsStackNavigation, 'EditProduct'>;
 type ReducerStateType = {
@@ -60,10 +61,9 @@ const formReducer = (state: ReducerStateType, a: ActionsType) => {
     return {...state}
 }
 
-
 const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) => {
 
-    const editedProduct = useSelector((state: RootState) => state.products.userProducts.find(product => product.id === productId))
+    const editedProduct = useSelector((state: RootState) => state.products.userProducts.find((product: Product) => product.id === productId))
     const [formTouched, setFormTouched] = useState(false)
     const dispatch = useDispatch();
 
@@ -93,7 +93,7 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
         const {title, description, price, imageUrl} = formState.inputValues;
         !!editedProduct
             ? dispatch(productActions.updateProduct.request(editedProduct.id, title, description, imageUrl))
-            : dispatch(productActions.createProduct.request(title, description, price, imageUrl));
+            : dispatch(productActions.createProduct.request(title, 'u3', description, price, imageUrl));
         navigation.navigate('Products')
     }, [dispatch, editedProduct, formState])
 
@@ -121,9 +121,9 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
 
     return (
         <KeyboardAvoidingView
-            style={{flex: 1}}
+            // style={{flex: 1}}
             behavior={'padding'}
-            keyboardVerticalOffset={50}
+            keyboardVerticalOffset={10}
         >
             <ScrollView>
                 <View style={styles.form}>

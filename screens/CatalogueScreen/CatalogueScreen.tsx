@@ -1,5 +1,5 @@
-import React from 'react';
-import {FlatList, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, FlatList, View} from 'react-native';
 import {StackScreenProps} from "@react-navigation/stack";
 import styles from './CatalogueScreen.styles';
 import * as actions from "../../store/actions/products.actions";
@@ -10,13 +10,56 @@ import {Ionicons} from "@expo/vector-icons";
 import colours from "../../constants/colours";
 import ProductListItem from "../../components/ProductListItem/ProductListItem";
 import Button from "../../components/basicComponents/Button/Button";
+import {fetchProducts} from "../../store/actions/products.actions";
+import Text from "../../components/basicComponents/Text/Text";
+import {Simulate} from "react-dom/test-utils";
+import load = Simulate.load;
 
 type Props = StackScreenProps<ShoppingStackNavigation, 'Catalogue'>;
 
 const CatalogueScreen = ({route, navigation}: Props) => {
 
+    const [isLoading, setIsLoading] = useState(false)
     const products = useSelector((state: RootState) => state.products.availableProducts);
+    const error = useSelector((state: RootState) => state.products.error);
     const dispatch = useDispatch();
+    const loadProducts = async () => {
+        setIsLoading(true)
+        await dispatch(fetchProducts.request)
+        setIsLoading(false)
+    }
+
+    useEffect(() => {
+        loadProducts()
+    }, [dispatch])
+
+
+    if (error) {
+        return (
+            <View style={styles.screen}>
+                <Text style={{color: 'tomato'}}>{error}</Text>
+                <Button onPress={loadProducts}>Try again</Button>
+            </View>
+        )
+    }
+
+    if (isLoading) {
+        return (
+            <View style={styles.screen}>
+                <ActivityIndicator size={'large'} color={colours.brightAccent}/>
+            </View>
+        )
+    }
+
+    if (!isLoading && products.length === 0) {
+        return (
+            <View style={styles.screen}>
+                <Text style={{color: colours.text.muted}}>There are no products on the platform</Text>
+            </View>
+        )
+    }
+
+
 
     const renderProductList = ({item}: { item: Product }) => {
         const onSelect = () => navigation.navigate('ProductDetails', {productId: item.id});

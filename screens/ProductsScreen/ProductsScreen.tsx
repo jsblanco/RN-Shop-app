@@ -1,5 +1,5 @@
-import React from 'react';
-import {Alert, FlatList, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, Alert, FlatList, View} from 'react-native';
 import styles from './ProductsScreen.styles';
 import {StackScreenProps} from "@react-navigation/stack";
 import {useDispatch, useSelector} from "react-redux";
@@ -8,15 +8,45 @@ import {Product} from "../../models/Product/Product";
 import * as productActions from '../../store/actions/products.actions'
 import ProductListItem from "../../components/ProductListItem/ProductListItem";
 import Button from "../../components/basicComponents/Button/Button";
+import Text from "../../components/basicComponents/Text/Text";
 import {Ionicons} from "@expo/vector-icons";
 import colours from "../../constants/colours";
+import {fetchProducts} from "../../store/actions/products.actions";
 
 type Props = StackScreenProps<ProductsStackNavigation, 'Products'>;
 
 const ProductsScreen = ({route, navigation}: Props) => {
-
+    const [isLoading, setIsLoading] = useState(false)
     const products = useSelector((state: RootState) => state.products.userProducts)
     const dispatch = useDispatch()
+
+
+    useEffect(() => {
+        const loadProducts = async () => {
+            setIsLoading(true)
+            await dispatch(fetchProducts.request)
+            setIsLoading(false)
+        }
+        loadProducts()
+    }, [dispatch])
+
+    if (isLoading) {
+        return (
+            <View style={styles.screen}>
+                <ActivityIndicator size={'large'} color={colours.brightAccent}/>
+            </View>
+        )
+    }
+
+    if (!isLoading && products.length === 0) {
+        return (
+            <View style={styles.screen}>
+                <Text style={{color: colours.text.muted}}>You have created no products</Text>
+            </View>
+        )
+    }
+
+
 
     const renderProductItems = ({item}: { item: Product }) => {
         const onSelect = () => navigation.navigate('ProductDetails', {productId: item.id})

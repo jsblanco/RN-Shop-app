@@ -29,36 +29,6 @@ export const deleteProduct = (productId: string) => {
     }
 }
 
-export const updateProduct = {
-    request: (id: string, title: string, description: string, imageUrl: string) => {
-        return {
-            type: constants.UPDATE_PRODUCT,
-            payload: {id, title, description, imageUrl}
-        }
-    }
-}
-
-export const createProduct = {
-    request: (title: string, description: string, price: string, imageUrl: string) => {
-        return {
-            type: constants.CREATE_PRODUCT_REQUEST,
-            payload: {title, description, price, imageUrl}
-        }
-    },
-    success: (payload: { id: string, title: string, description: string, price: string, imageUrl: string }) => {
-        return {
-            type: constants.CREATE_PRODUCT_SUCCESS,
-            payload: payload
-        }
-    },
-    failure: (error: any) => {
-        return {
-            type: constants.CREATE_PRODUCT_FAILURE,
-            payload: error
-        }
-    }
-}
-
 export const fetchProducts = {
     request: {
         type: constants.FETCH_PRODUCTS_REQUEST,
@@ -73,6 +43,48 @@ export const fetchProducts = {
     failure: (error: any) => {
         return {
             type: constants.FETCH_PRODUCTS_FAILURE,
+            payload: error
+        }
+    }
+}
+
+export const createProduct = {
+    request: (title: string, userId: string, description: string, price: string, imageUrl: string) => {
+        return {
+            type: constants.CREATE_PRODUCT_REQUEST,
+            payload: {title, userId, description, price, imageUrl}
+        }
+    },
+    success: (payload: Product) => {
+        return {
+            type: constants.CREATE_PRODUCT_SUCCESS,
+            payload: payload
+        }
+    },
+    failure: (error: any) => {
+        return {
+            type: constants.CREATE_PRODUCT_FAILURE,
+            payload: error
+        }
+    }
+}
+
+export const updateProduct = {
+    request: (id: string, title: string, description: string, imageUrl: string) => {
+        return {
+            type: constants.UPDATE_PRODUCT_REQUEST,
+            payload: {id, title, description, imageUrl}
+        }
+    },
+    success: (payload: { id: string, title: string, description: string, imageUrl: string }) => {
+        return {
+            type: constants.UPDATE_PRODUCT_SUCCESS,
+            payload: payload
+        }
+    },
+    failure: (error: any) => {
+        return {
+            type: constants.UPDATE_PRODUCT_FAILURE,
             payload: error
         }
     }
