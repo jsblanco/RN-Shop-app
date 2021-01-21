@@ -22,6 +22,7 @@ export default StyleSheet.create({
     },
     warning: {
         color: 'tomato',
+        fontFamily: 'openSans',
         textAlign: 'center',
     }
 })

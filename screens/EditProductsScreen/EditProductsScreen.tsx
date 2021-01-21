@@ -1,5 +1,5 @@
 import React, {useCallback, useState, useReducer} from 'react';
-import {Alert, Platform, ScrollView, View} from 'react-native';
+import {Alert, KeyboardAvoidingView, Platform, ScrollView, View} from 'react-native';
 import styles from './EditProductsScreen.styles';
 import {StackScreenProps} from "@react-navigation/stack";
 import {useDispatch, useSelector} from "react-redux";
@@ -50,12 +50,6 @@ const formReducer = (state: ReducerStateType, a: ActionsType) => {
             // @ts-ignore
             updatedFormIsValid = updatedFormIsValid && updatedValidities[key]
         }
-        console.log({
-            ...state,
-            inputValues: updatedValues,
-            inputValidities: updatedValidities,
-            formIsValid: updatedFormIsValid
-        })
         return {
             ...state,
             inputValues: updatedValues,
@@ -104,7 +98,6 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
     }, [dispatch, editedProduct, formState])
 
     const stringInputHandler = useCallback((key: string, value: string, isValid: boolean) => {
-        console.log('dispatched')
         formDispatch({
             type: FORM_UPDATE,
             value: value,
@@ -127,52 +120,61 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
     }, [navigation]);
 
     return (
-        <ScrollView>
-            <View style={styles.form}>
-                <FormControl
-                    keyName={'title'}
-                    label={'product name'}
-                    formTouched={formTouched}
-                    value={formState.inputValues.title}
-                    isValid={formState.inputValidities.title}
-                    inputHandler={stringInputHandler}
-                    required={true}
-                />
-                <FormControl
-                    keyName={'description'}
-                    formTouched={formTouched}
-                    label={'product description'}
-                    value={formState.inputValues.description}
-                    isValid={formState.inputValidities.description}
-                    inputHandler={stringInputHandler}
-                    multiline={true}
-                    required={true}
-                />
-                <FormControl
-                    keyName={'imageUrl'}
-                    label={'image URL'}
-                    formTouched={formTouched}
-                    value={formState.inputValues.imageUrl}
-                    isValid={formState.inputValidities.imageUrl}
-                    inputHandler={stringInputHandler}
-                    required={true}
-                />
-                {!editedProduct &&
-                <FormControl
-                    label={'Price'}
-                    keyName={'price'}
-                    value={formState.inputValues.price}
-                    isValid={formState.inputValidities.price}
-                    formTouched={formTouched}
-                    inputHandler={stringInputHandler}
-                    keyboardType={"decimal-pad"}
-                    required={true}
-                />}
-                <View style={styles.actionRow}>
-                    <Button onPress={saveChanges}>{!!editedProduct ? 'Update product' : 'Create product'}</Button>
+        <KeyboardAvoidingView
+            style={{flex: 1}}
+            behavior={'padding'}
+            keyboardVerticalOffset={50}
+        >
+            <ScrollView>
+                <View style={styles.form}>
+                    <FormControl
+                        keyName={'title'}
+                        label={'product name'}
+                        formTouched={formTouched}
+                        value={formState.inputValues.title}
+                        isValid={formState.inputValidities.title}
+                        inputHandler={stringInputHandler}
+                        minLength={5}
+                        required
+                    />
+                    <FormControl
+                        keyName={'description'}
+                        formTouched={formTouched}
+                        label={'product description'}
+                        value={formState.inputValues.description}
+                        isValid={formState.inputValidities.description}
+                        inputHandler={stringInputHandler}
+                        minLength={30}
+                        multiline
+                        required
+                    />
+                    <FormControl
+                        keyName={'imageUrl'}
+                        label={'image URL'}
+                        formTouched={formTouched}
+                        value={formState.inputValues.imageUrl}
+                        isValid={formState.inputValidities.imageUrl}
+                        inputHandler={stringInputHandler}
+                        required
+                    />
+                    {!editedProduct &&
+                    <FormControl
+                        label={'Price'}
+                        keyName={'price'}
+                        value={formState.inputValues.price}
+                        isValid={formState.inputValidities.price}
+                        formTouched={formTouched}
+                        inputHandler={stringInputHandler}
+                        keyboardType={"decimal-pad"}
+                        required
+                        min={0.99}
+                    />}
+                    <View style={styles.actionRow}>
+                        <Button onPress={saveChanges}>{!!editedProduct ? 'Update product' : 'Create product'}</Button>
+                    </View>
                 </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </KeyboardAvoidingView>
     )
 }
 

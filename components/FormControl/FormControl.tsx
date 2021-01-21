@@ -95,7 +95,7 @@ const FormControl = ({
                 autoCompleteType={autoCompleteType}
                 onBlur={lostFocusHandler}
             />
-            {(state.isTouched && !state.isValid) &&
+            {state.isTouched && !state.isValid &&
             <Text style={styles.warning}>Please input a valid {label.toLowerCase()}</Text>}
         </View>
     )
