@@ -18,8 +18,8 @@ const initialState: StateType = {
 }
 
 const productsReducer = (state: StateType = initialState, {type, payload}: { type: string, payload?: any }) => {
-    let product: Product | undefined;
-    let productIndex: number, updatedCart: { product: Product, amount: number }[];
+    let product: Product | undefined, productIndex: number, updatedCart: { product: Product, amount: number }[],
+        updatedProducts: Product[], updatedUserProducts: Product[];
     switch (type) {
         case constants.ADD_TO_CART:
             if (state.cart.length > 0) {
@@ -52,13 +52,6 @@ const productsReducer = (state: StateType = initialState, {type, payload}: { typ
         case constants.EMPTY_CART:
         case orderConstants.ADD_ORDER:
             return {...state, cart: []}
-        case constants.DELETE_PRODUCT:
-            return {
-                ...state,
-                cart: state.cart.filter(item => item.product.id !== payload.productId),
-                availableProducts: state.availableProducts.filter(product => product.id !== payload.productId),
-                userProducts: state.userProducts.filter(product => product.id !== payload.productId),
-            };
         case constants.CREATE_PRODUCT_SUCCESS:
             return {
                 ...state,
@@ -75,15 +68,37 @@ const productsReducer = (state: StateType = initialState, {type, payload}: { typ
             }
         case constants.UPDATE_PRODUCT_SUCCESS:
             productIndex = state.userProducts.findIndex(product => product.id === payload.id);
-            product = new Product(payload.id, state.userProducts[productIndex].id, payload.title, payload.description, payload.imageUrl, state.userProducts[productIndex].price)
+            product = new Product(payload.id, state.userProducts[productIndex].userId, payload.title, payload.description, payload.imageUrl, state.userProducts[productIndex].price);
+            updatedUserProducts = [...state.userProducts];
+            updatedUserProducts[productIndex] = product;
+
+            productIndex = state.availableProducts.findIndex(product => product.id === payload.id);
+            updatedProducts = [...state.availableProducts];
+            updatedProducts[productIndex] = product;
+
+            updatedCart = [...state.cart];
+            productIndex = updatedCart.findIndex(item=> item.product.id === payload.id)
+            if (productIndex>=0){
+                updatedCart[productIndex].product = product;
+            }
+
             return {
                 ...state,
                 error: '',
-                availableProducts: [product, ...state.availableProducts.filter(product => product.id !== payload.id)],
-                userProducts: [product, ...state.userProducts.filter(product => product.id !== payload.id)]
+                availableProducts: updatedProducts,
+                userProducts: updatedUserProducts,
+                car: updatedCart,
+            }
+        case constants.DELETE_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                cart: state.cart.filter(purchase => purchase.product.id !== payload.id),
+                userProducts: state.userProducts.filter(product => product.id !== payload.id),
+                availableProducts: state.availableProducts.filter(product => product.id !== payload.id)
             }
         case constants.CREATE_PRODUCT_REQUEST:
         case constants.UPDATE_PRODUCT_REQUEST:
+        case constants.DELETE_PRODUCT_REQUEST:
         case constants.FETCH_PRODUCTS_REQUEST:
             return {
                 ...state,
@@ -91,6 +106,7 @@ const productsReducer = (state: StateType = initialState, {type, payload}: { typ
             }
         case constants.CREATE_PRODUCT_FAILURE:
         case constants.UPDATE_PRODUCT_FAILURE:
+        case constants.DELETE_PRODUCT_FAILURE:
         case constants.FETCH_PRODUCTS_FAILURE:
             return {
                 ...state,

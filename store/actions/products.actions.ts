@@ -22,13 +22,6 @@ export const emptyCart = () => {
     }
 }
 
-export const deleteProduct = (productId: string) => {
-    return {
-        type: constants.DELETE_PRODUCT,
-        payload: {productId}
-    }
-}
-
 export const fetchProducts = {
     request: {
         type: constants.FETCH_PRODUCTS_REQUEST,
@@ -76,7 +69,7 @@ export const updateProduct = {
             payload: {id, title, description, imageUrl}
         }
     },
-    success: (payload: { id: string, title: string, description: string, imageUrl: string }) => {
+    success: (payload: {id: string, title: string, description: string, imageUrl: string}) => {
         return {
             type: constants.UPDATE_PRODUCT_SUCCESS,
             payload: payload
@@ -85,6 +78,27 @@ export const updateProduct = {
     failure: (error: any) => {
         return {
             type: constants.UPDATE_PRODUCT_FAILURE,
+            payload: error
+        }
+    }
+}
+
+export const deleteProduct = {
+    request: (id: string) => {
+        return {
+            type: constants.DELETE_PRODUCT_REQUEST,
+            payload: {id: id}
+        }
+    },
+    success: (id: string) => {
+        return {
+            type: constants.DELETE_PRODUCT_SUCCESS,
+            payload: {id: id}
+        }
+    },
+    failure: (error: any) => {
+        return {
+            type: constants.DELETE_PRODUCT_FAILURE,
             payload: error
         }
     }

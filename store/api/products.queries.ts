@@ -8,12 +8,16 @@ export const fetchProductsFromDb = () => {
 
 export const createProductInDb = ({title, userId, description, imageUrl, price}:
                                       { title: string, userId: string, description: string, imageUrl: string, price: string }) => {
-    return axiosInstance.get("/products.json", {title, userId, description, imageUrl, price})
+    return axiosInstance.post("/products.json", {title, userId, description, imageUrl, price})
 }
 
-export const updateProductInDb = ({title, userId, description, imageUrl, id}:
-                                      { title: string, userId: string, description: string, imageUrl: string, id: string }) => {
-    return axiosInstance.get("/products.json", {title, userId, description, imageUrl, id})
+export const updateProductInDb = ({title, description, imageUrl, id}:
+                                      { title: string, description: string, imageUrl: string, id: string }) => {
+    return axiosInstance.patch(`/products/${id}.json`, {title, description, imageUrl})
+}
+
+export const deleteProductInDb = (id: string) => {
+    return axiosInstance.delete(`/products/${id}.json`)
 }
 
 /*/

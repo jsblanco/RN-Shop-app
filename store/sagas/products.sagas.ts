@@ -1,7 +1,7 @@
 import {takeLatest, call, put} from "redux-saga/effects";
 import * as constants from "../constants/products.constants";
-import {createProductInDb, fetchProductsFromDb, updateProductInDb} from "../api/products.queries"
-import {createProduct, fetchProducts} from "../actions/products.actions";
+import {createProductInDb, deleteProductInDb, fetchProductsFromDb, updateProductInDb} from "../api/products.queries"
+import {createProduct, deleteProduct, fetchProducts, updateProduct} from "../actions/products.actions";
 import {ProductAdapter} from "../../models/Product/Product.adapter";
 
 const productAdapter = new ProductAdapter()
@@ -33,20 +33,31 @@ function* createProductEffect({payload}: { type: string, payload: { userId: stri
     }
 }
 
-function* updateProductEffect({payload}: { type: string, payload: { id: string, title: string, userId: string, description: string, imageUrl: string } }) {
+function* updateProductEffect({payload}: { type: string, payload: { id: string, title: string, description: string, imageUrl: string } }) {
     try {
         yield call(updateProductInDb, payload);
-        const product = productAdapter.adapt({...payload})
-        yield put(createProduct.success(product));
+        yield put(updateProduct.success(payload));
     } catch (e) {
         console.error(e);
-        yield put(createProduct.failure(e));
+        yield put(updateProduct.failure(e));
+    }
+}
+
+function* deleteProductEffect({payload}: { type: string, payload: { id: string } }) {
+    try {
+        console.log(payload)
+        yield call(deleteProductInDb, payload.id);
+        yield put(deleteProduct.success(payload.id));
+    } catch (e) {
+        console.error(e);
+        yield put(deleteProduct.failure(e));
     }
 }
 
 function* productSagas() {
     yield takeLatest(constants.CREATE_PRODUCT_REQUEST, createProductEffect);
     yield takeLatest(constants.UPDATE_PRODUCT_REQUEST, updateProductEffect);
+    yield takeLatest(constants.DELETE_PRODUCT_REQUEST, deleteProductEffect);
     yield takeLatest(constants.FETCH_PRODUCTS_REQUEST, fetchProductsEffect);
 }
 

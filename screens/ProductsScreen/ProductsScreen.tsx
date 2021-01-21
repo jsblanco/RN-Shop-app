@@ -12,6 +12,7 @@ import Text from "../../components/basicComponents/Text/Text";
 import {Ionicons} from "@expo/vector-icons";
 import colours from "../../constants/colours";
 import {fetchProducts} from "../../store/actions/products.actions";
+import {Simulate} from "react-dom/test-utils";
 
 type Props = StackScreenProps<ProductsStackNavigation, 'Products'>;
 
@@ -32,6 +33,10 @@ const ProductsScreen = ({route, navigation}: Props) => {
         const unsubscribe = navigation.addListener('focus', loadProducts)
         return unsubscribe;
     }, [loadProducts])
+
+    useEffect(() => {
+        loadProducts()
+    }, [dispatch, loadProducts])
 
     if (error) {
         return (
@@ -59,11 +64,10 @@ const ProductsScreen = ({route, navigation}: Props) => {
     }
 
 
-
     const renderProductItems = ({item}: { item: Product }) => {
         const onSelect = () => navigation.navigate('ProductDetails', {productId: item.id})
         const onEdit = () => navigation.navigate('EditProduct', {productId: item.id})
-        const onDelete = () => dispatch(productActions.deleteProduct(item.id))
+        const onDelete = () => dispatch(productActions.deleteProduct.request(item.id))
 
         const deleteHandler = () => Alert.alert(
             'Are you sure?',

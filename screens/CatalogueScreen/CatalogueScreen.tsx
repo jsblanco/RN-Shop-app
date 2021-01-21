@@ -12,7 +12,6 @@ import ProductListItem from "../../components/ProductListItem/ProductListItem";
 import Button from "../../components/basicComponents/Button/Button";
 import {fetchProducts} from "../../store/actions/products.actions";
 import Text from "../../components/basicComponents/Text/Text";
-import {Simulate} from "react-dom/test-utils";
 type Props = StackScreenProps<ShoppingStackNavigation, 'Catalogue'>;
 
 const CatalogueScreen = ({route, navigation}: Props) => {
@@ -33,6 +32,10 @@ const CatalogueScreen = ({route, navigation}: Props) => {
         const unsubscribe = navigation.addListener('focus', loadProducts)
         return unsubscribe;
     }, [loadProducts])
+
+    useEffect(() => {
+        loadProducts()
+    }, [dispatch, loadProducts])
 
     if (error) {
         return (
