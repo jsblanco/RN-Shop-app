@@ -13,7 +13,7 @@ function* fetchProductsEffect() {
         const fetchedProducts = yield call(fetchProductsFromDb);
         for (let key in fetchedProducts) {
             const product = productAdapter.adapt({id: key, userId: 'u3', ...fetchedProducts[key]})
-            productArr.unshift(product)
+            productArr.push(product)
         }
         yield put(fetchProducts.success(productArr));
     } catch (e) {

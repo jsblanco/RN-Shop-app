@@ -14,15 +14,16 @@ import colours from "../../constants/colours";
 type Props = StackScreenProps<OrderStackNavigation, 'Orders'>;
 
 const OrdersScreen = ({route, navigation}: Props) => {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isRefreshing, setIsRefreshing] = useState(false);
     const orders = useSelector((state: RootState) => state.orders.orders);
     const error = useSelector((state: RootState) => state.orders.error);
     const dispatch = useDispatch()
 
     const loadOrders = useCallback(async () => {
-        setIsLoading(true)
+        setIsRefreshing(true)
         await dispatch(fetchOrders.request())
-        setIsLoading(false)
+        setIsRefreshing(false)
     }, [dispatch])
 
 
@@ -32,8 +33,9 @@ const OrdersScreen = ({route, navigation}: Props) => {
     }, [loadOrders])
 
     useEffect(() => {
-        loadOrders()
-    }, [dispatch, loadOrders])
+        setIsLoading(true)
+        loadOrders().then(() => setIsLoading(false))
+    }, [dispatch])
 
     if (error) {
         return (
@@ -44,23 +46,22 @@ const OrdersScreen = ({route, navigation}: Props) => {
         )
     }
 
-    if (isLoading) {
+    if (isLoading || orders.length === 0) {
         return (
-            <View style={styles.screen}>
+            <View style={styles.centered}>
                 <ActivityIndicator size={'large'} color={colours.brightAccent}/>
             </View>
         )
     }
-
-    if (!isLoading && orders.length === 0) {
-        return (
-            <View style={styles.screen}>
-                <Text style={{color: colours.text.muted}}>There are no orders on the platform</Text>
-            </View>
-        )
-    }
-
-
+    /*
+        if (!isLoading && orders.length === 0) {
+            return (
+                <View style={styles.screen}>
+                    <Text style={{color: colours.text.muted}}>There are no orders on the platform</Text>
+                </View>
+            )
+        }
+    */
 
     const renderOrderItems = ({item}: { item: Order }) => {
         return <OrderListItem order={item}/>
@@ -71,6 +72,8 @@ const OrdersScreen = ({route, navigation}: Props) => {
     return (
         <View style={styles.screen}>
             <FlatList
+                onRefresh={loadOrders}
+                refreshing={isRefreshing}
                 data={orders}
                 style={styles.flatList}
                 renderItem={renderOrderItems}

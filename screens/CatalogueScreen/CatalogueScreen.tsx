@@ -12,19 +12,21 @@ import ProductListItem from "../../components/ProductListItem/ProductListItem";
 import Button from "../../components/basicComponents/Button/Button";
 import {fetchProducts} from "../../store/actions/products.actions";
 import Text from "../../components/basicComponents/Text/Text";
+
 type Props = StackScreenProps<ShoppingStackNavigation, 'Catalogue'>;
 
 const CatalogueScreen = ({route, navigation}: Props) => {
 
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
+    const [isRefreshing, setIsRefreshing] = useState(false)
     const products = useSelector((state: RootState) => state.products.availableProducts);
     const error = useSelector((state: RootState) => state.products.error);
     const dispatch = useDispatch();
 
     const loadProducts = useCallback(async () => {
-        setIsLoading(true)
+        setIsRefreshing(true)
         await dispatch(fetchProducts.request)
-        setIsLoading(false)
+        setIsRefreshing(false)
     }, [dispatch])
 
 
@@ -34,7 +36,8 @@ const CatalogueScreen = ({route, navigation}: Props) => {
     }, [loadProducts])
 
     useEffect(() => {
-        loadProducts()
+        setIsLoading(true)
+        loadProducts().then(() => setIsLoading(false))
     }, [dispatch, loadProducts])
 
     if (error) {
@@ -46,14 +49,14 @@ const CatalogueScreen = ({route, navigation}: Props) => {
         )
     }
 
-    if (isLoading) {
+    if (isLoading || products.length === 0) {
         return (
-            <View style={styles.screen}>
+            <View style={styles.centered}>
                 <ActivityIndicator size={'large'} color={colours.brightAccent}/>
             </View>
         )
     }
-
+/*
     if (!isLoading && products.length === 0) {
         return (
             <View style={styles.screen}>
@@ -61,8 +64,7 @@ const CatalogueScreen = ({route, navigation}: Props) => {
             </View>
         )
     }
-
-
+*/
 
     const renderProductList = ({item}: { item: Product }) => {
         const onSelect = () => navigation.navigate('ProductDetails', {productId: item.id});
@@ -89,6 +91,8 @@ const CatalogueScreen = ({route, navigation}: Props) => {
     return (
         <View style={styles.screen}>
             <FlatList
+                onRefresh={loadProducts}
+                refreshing={isRefreshing}
                 style={{width: '100%',}}
                 data={products}
                 renderItem={renderProductList}

@@ -12,6 +12,11 @@ export default StyleSheet.create({
         textAlign: 'center',
         fontFamily: 'openSansBold'
     },
+    centered: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     flatList: {
         width: '100%',
     },

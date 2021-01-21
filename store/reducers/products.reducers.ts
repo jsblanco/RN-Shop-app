@@ -12,7 +12,7 @@ type StateType = {
 
 const initialState: StateType = {
     error: '',
-    availableProducts: [],// PRODUCTS,
+    availableProducts: [], // PRODUCTS,
     userProducts: [], //PRODUCTS.filter(product => product.userId === 'u3'),
     cart: [],
 }

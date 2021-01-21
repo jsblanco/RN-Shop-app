@@ -8,6 +8,11 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    centered: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     button: {
         marginBottom: 10,
         marginHorizontal: 10,
