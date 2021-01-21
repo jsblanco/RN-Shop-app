@@ -1,6 +1,6 @@
 import * as constants from '../constants/products.constants'
 import * as orderConstants from '../constants/orders.constants'
-import PRODUCTS from '../../data/dummyData';
+// import PRODUCTS from '../../data/dummyData';
 import {Product} from "../../models/Product/Product";
 
 type StateType = {
@@ -50,7 +50,7 @@ const productsReducer = (state: StateType = initialState, {type, payload}: { typ
                 cart: updatedCart
             }
         case constants.EMPTY_CART:
-        case orderConstants.ADD_ORDER:
+        case orderConstants.SAVE_ORDER_SUCCESS:
             return {...state, cart: []}
         case constants.CREATE_PRODUCT_SUCCESS:
             return {

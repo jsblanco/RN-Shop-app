@@ -1,34 +1,48 @@
 import * as constants from '../constants/orders.constants';
-import {Product} from "../../models/Product/Product";
 import {Order} from "../../models/Order/Order";
+import {Product} from "../../models/Product/Product";
 
-export const addOrder = (payload: { product: Product, amount: number }[]) => {
-    return {
-        type: constants.ADD_ORDER,
-        payload: {
-            orderItems: payload
+export const fetchOrders = {
+    request: () => {
+        return {
+            type: constants.FETCH_ORDERS_REQUEST,
+        }
+    },
+
+    success: (payload: Order[]) => {
+        return {
+            type: constants.FETCH_ORDERS_SUCCESS,
+            payload:  payload
+        }
+    },
+
+    failure: (e: any) => {
+        return {
+            type: constants.FETCH_ORDERS_FAILURE,
+            payload: e
         }
     }
 }
 
-export const fetchOrdersRequest = () => {
-    return {
-        type: constants.FETCH_ORDERS_FAILURE,
-    }
-}
-
-export const fetchOrdersSuccess = (payload: Order[]) => {
-    return {
-        type: constants.FETCH_ORDERS_SUCCESS,
-        payload: {
-            orderItems: payload
+export const saveOrder = {
+    request: (order: { product: Product, amount: number }[]) => {
+        return {
+            type: constants.SAVE_ORDER_REQUEST,
+            payload: order
         }
-    }
-}
+    },
 
-export const fetchOrdersFailure = (e: any) => {
-    return {
-        type: constants.FETCH_ORDERS_FAILURE,
-        payload: e
+    success: (payload: Order) => {
+        return {
+            type: constants.SAVE_ORDER_SUCCESS,
+            payload:  payload
+        }
+    },
+
+    failure: (e: any) => {
+        return {
+            type: constants.SAVE_ORDER_FAILURE,
+            payload: e
+        }
     }
 }

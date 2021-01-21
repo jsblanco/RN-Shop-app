@@ -1,15 +1,15 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {Platform, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
 import styles from './OrderListItem.styles';
 import Text from "../../components/basicComponents/Text/Text";
 import {Order} from "../../models/Order/Order";
-import {useNavigation} from '@react-navigation/native';
 
 const OrderListItem = ({order}: { order: Order }) => {
 
     let ButtonType: any = TouchableOpacity;
     if (Platform.OS === 'android' && Platform.Version >= 21) ButtonType = TouchableNativeFeedback;
-    const date = order.date.getDate() + '/' + ("0" + (1 + order.date.getMonth())).slice(-2) + '/' + order.date.getFullYear();
+    const date = new Date(order.date).getDate() + '/' + ("0" + (1 + order.date.getMonth())).slice(-2) + '/' + order.date.getFullYear();
     const navigator = useNavigation()
     const seeOrderDetails = () => {
         navigator.navigate('OrderDetails', {justPurchased: false, orderId: order.id})

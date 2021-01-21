@@ -21,8 +21,20 @@ const OrderDetailsScreen = ({route, navigation}: Props) => {
 
     let orderDetails: Order | undefined
     orderId
-        ? orderDetails = useSelector((state: RootState) => state.orders.orders.find(order => order.id === orderId))
-        : orderDetails = useSelector((state: RootState) => state.orders.orders[state.orders.orders.length - 1])
+        ? orderDetails = useSelector((state: RootState) => state.orders.orders.find((order: Order) => order.id === orderId))
+        : orderDetails = useSelector((state: RootState) => state.orders.orders[0])
+
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => (
+                <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                    <Item title={'Menu'} iconName={'arrow-back-sharp'}
+                          onPress={navigation.popToTop}/>
+                </HeaderButtons>
+            ),
+        });
+    }, [navigation]);
 
     if (!orderDetails) {
         return (
@@ -36,18 +48,6 @@ const OrderDetailsScreen = ({route, navigation}: Props) => {
     const renderCartItems = ({item}: { item: { product: Product, amount: number } }) => {
         return <CartItem item={item} hideIcons={true}/>
     }
-
-    React.useLayoutEffect(() => {
-        navigation.setOptions({
-            headerLeft: () => (
-                <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                    <Item title={'Menu'} iconName={'arrow-back-sharp'}
-                          onPress={navigation.popToTop}/>
-                </HeaderButtons>
-            ),
-        });
-    }, [navigation]);
-
 
     return (
         <View style={styles.screen}>

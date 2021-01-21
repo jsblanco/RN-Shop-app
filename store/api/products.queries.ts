@@ -1,5 +1,3 @@
-const apiUrl = 'https://jorge-shop-app-default-rtdb.europe-west1.firebasedatabase.app/products.json';
-
 import {axiosInstance} from "./axios";
 
 export const fetchProductsFromDb = () => {
@@ -21,6 +19,9 @@ export const deleteProductInDb = (id: string) => {
 }
 
 /*/
+const apiUrl = 'https://jorge-shop-app-default-rtdb.europe-west1.firebasedatabase.app/products.json';
+
+
 export const fetchProductsFromDb = async ()=> {
     const response = await fetch(apiUrl, {
         method: 'GET',

@@ -2,23 +2,25 @@ import {Product} from "../Product/Product";
 
 export class Order {
     private readonly _id: string
-    // private userId: string
+    private readonly _userId: string
     private readonly _purchases: { product: Product, amount: number }[]
-    private _price: number
+    private readonly _price: number
     private readonly _date: Date
 
-    constructor(id: string, purchases: { product: Product; amount: number }[], date: Date) {
+    constructor(id: string, userId: string, purchases: { product: Product; amount: number }[], date: Date, price: number) {
         this._id = id;
+        this._userId = userId;
         this._purchases = purchases;
-        this._date = date;
-        this._price = 0;
-        purchases.map(purchase => {
-            this._price += (purchase.product.price * purchase.amount)
-        })
+        this._date = new Date(date);
+        this._price = price;
     }
 
     get id(): string {
         return this._id;
+    }
+
+    get userId(): string {
+        return this._userId;
     }
 
     get purchases(): { product: Product; amount: number }[] {

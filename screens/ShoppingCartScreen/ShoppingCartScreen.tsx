@@ -23,7 +23,7 @@ const ShoppingCartScreen = ({route, navigation}: Props) => {
     const dispatch = useDispatch();
     const emptyCart = () => dispatch(productsActions.emptyCart())
     const confirmOrder = () => {
-        dispatch(orderActions.addOrder(cartItems));
+        dispatch(orderActions.saveOrder.request(cartItems));
         navigation.navigate('OrderDetails', {orderId: ''});
     }
     const renderCartItems = ({item}: { item: { product: Product, amount: number } }) => {

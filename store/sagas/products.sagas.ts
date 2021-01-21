@@ -45,7 +45,6 @@ function* updateProductEffect({payload}: { type: string, payload: { id: string, 
 
 function* deleteProductEffect({payload}: { type: string, payload: { id: string } }) {
     try {
-        console.log(payload)
         yield call(deleteProductInDb, payload.id);
         yield put(deleteProduct.success(payload.id));
     } catch (e) {

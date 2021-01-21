@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Product} from "../../models/Product/Product";
 
 const baseUrl = 'https://jorge-shop-app-default-rtdb.europe-west1.firebasedatabase.app';
 
@@ -23,7 +24,9 @@ declare module 'axios' {
         userId?: string,
         description?: string,
         imageUrl?: string,
-        price?: string
+        price?: string | number
         id?: string
+        purchases?: { product: Product; amount: number;}[]
+        date?: Date
     }
 }
