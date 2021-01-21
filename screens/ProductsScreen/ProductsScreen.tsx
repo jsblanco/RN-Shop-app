@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {ActivityIndicator, Alert, FlatList, View} from 'react-native';
 import styles from './ProductsScreen.styles';
 import {StackScreenProps} from "@react-navigation/stack";
@@ -18,17 +18,29 @@ type Props = StackScreenProps<ProductsStackNavigation, 'Products'>;
 const ProductsScreen = ({route, navigation}: Props) => {
     const [isLoading, setIsLoading] = useState(false)
     const products = useSelector((state: RootState) => state.products.userProducts)
+    const error = useSelector((state: RootState) => state.products.error);
     const dispatch = useDispatch()
 
 
-    useEffect(() => {
-        const loadProducts = async () => {
-            setIsLoading(true)
-            await dispatch(fetchProducts.request)
-            setIsLoading(false)
-        }
-        loadProducts()
+    const loadProducts = useCallback(async () => {
+        setIsLoading(true)
+        await dispatch(fetchProducts.request)
+        setIsLoading(false)
     }, [dispatch])
+
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', loadProducts)
+        return unsubscribe;
+    }, [loadProducts])
+
+    if (error) {
+        return (
+            <View style={styles.screen}>
+                <Text style={{color: 'tomato'}}>{error}</Text>
+                <Button onPress={loadProducts}>Try again</Button>
+            </View>
+        )
+    }
 
     if (isLoading) {
         return (

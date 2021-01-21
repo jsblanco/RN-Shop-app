@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, View} from 'react-native';
 import {StackScreenProps} from "@react-navigation/stack";
 import styles from './CatalogueScreen.styles';
@@ -13,8 +13,6 @@ import Button from "../../components/basicComponents/Button/Button";
 import {fetchProducts} from "../../store/actions/products.actions";
 import Text from "../../components/basicComponents/Text/Text";
 import {Simulate} from "react-dom/test-utils";
-import load = Simulate.load;
-
 type Props = StackScreenProps<ShoppingStackNavigation, 'Catalogue'>;
 
 const CatalogueScreen = ({route, navigation}: Props) => {
@@ -23,16 +21,18 @@ const CatalogueScreen = ({route, navigation}: Props) => {
     const products = useSelector((state: RootState) => state.products.availableProducts);
     const error = useSelector((state: RootState) => state.products.error);
     const dispatch = useDispatch();
-    const loadProducts = async () => {
+
+    const loadProducts = useCallback(async () => {
         setIsLoading(true)
         await dispatch(fetchProducts.request)
         setIsLoading(false)
-    }
-
-    useEffect(() => {
-        loadProducts()
     }, [dispatch])
 
+
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', loadProducts)
+        return unsubscribe;
+    }, [loadProducts])
 
     if (error) {
         return (
