@@ -1,4 +1,4 @@
-import {Product} from "./Product";
+import {Product} from "../Product/Product";
 
 export class Order {
     private readonly _id: string
@@ -16,7 +16,6 @@ export class Order {
             this._price += (purchase.product.price * purchase.amount)
         })
     }
-
 
     get id(): string {
         return this._id;

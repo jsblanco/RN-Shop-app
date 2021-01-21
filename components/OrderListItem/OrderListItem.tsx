@@ -2,7 +2,7 @@ import React from 'react';
 import {Platform, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
 import styles from './OrderListItem.styles';
 import Text from "../../components/basicComponents/Text/Text";
-import {Order} from "../../models/Order";
+import {Order} from "../../models/Order/Order";
 import {useNavigation} from '@react-navigation/native';
 
 const OrderListItem = ({order}: { order: Order }) => {

@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {enableScreens} from "react-native-screens"
 import AppLoading from 'expo-app-loading';
 import {Provider} from 'react-redux';
-import * as Font from "expo-font"
+import * as Font from "expo-font";
+
 import {RootDrawerNavigation} from "./navigation/RootDrawerNavigation";
 import {store} from "./store/store";
 

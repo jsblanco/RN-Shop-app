@@ -1,15 +1,15 @@
 export class Product {
 
     private readonly _id: string
-    private _ownersId: string
+    private _userId: string
     private _title: string
     private _description: string
     private _imageUrl: string
     private _price: number
 
-    constructor(id: string, ownersId: string, title: string, description: string, imageUrl: string, price: number) {
+    constructor(id: string, userId: string, title: string, description: string, imageUrl: string, price: number) {
         this._id = id;
-        this._ownersId = ownersId;
+        this._userId = userId;
         this._title = title;
         this._description = description;
         this._imageUrl = imageUrl;
@@ -20,8 +20,8 @@ export class Product {
         return this._id;
     }
 
-    get ownersId(): string {
-        return this._ownersId;
+    get userId(): string {
+        return this._userId;
     }
 
     get title(): string {
@@ -40,8 +40,8 @@ export class Product {
         return this._price;
     }
 
-    set ownersId(value: string) {
-        this._ownersId = value;
+    set userId(value: string) {
+        this._userId = value;
     }
 
     set title(value: string) {

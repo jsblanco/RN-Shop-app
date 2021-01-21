@@ -1,6 +1,6 @@
 import * as constants from '../constants/orders.constants';
-import {Product} from "../../models/Product";
-import {Order} from "../../models/Order";
+import {Product} from "../../models/Product/Product";
+import {Order} from "../../models/Order/Order";
 
 export const addOrder = (payload: { product: Product, amount: number }[]) => {
     return {

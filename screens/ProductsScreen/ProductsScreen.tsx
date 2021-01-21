@@ -4,7 +4,7 @@ import styles from './ProductsScreen.styles';
 import {StackScreenProps} from "@react-navigation/stack";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
-import {Product} from "../../models/Product";
+import {Product} from "../../models/Product/Product";
 import * as productActions from '../../store/actions/products.actions'
 import ProductListItem from "../../components/ProductListItem/ProductListItem";
 import Button from "../../components/basicComponents/Button/Button";

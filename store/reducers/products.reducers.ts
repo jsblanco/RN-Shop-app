@@ -1,7 +1,7 @@
 import * as constants from '../constants/products.constants'
 import * as orderConstants from '../constants/orders.constants'
 import PRODUCTS from '../../data/dummyData';
-import {Product} from "../../models/Product";
+import {Product} from "../../models/Product/Product";
 
 type StateType = {
     availableProducts: Product[],
@@ -10,8 +10,8 @@ type StateType = {
 }
 
 const initialState: StateType = {
-    availableProducts: PRODUCTS,
-    userProducts: PRODUCTS.filter(product => product.ownersId === 'u3'),
+    availableProducts: [],// PRODUCTS,
+    userProducts: [], //PRODUCTS.filter(product => product.userId === 'u3'),
     cart: [],
 }
 
@@ -63,6 +63,12 @@ const productsReducer = (state: StateType = initialState, {type, payload}: { typ
                 ...state,
                 availableProducts: [product, ...state.availableProducts],
                 userProducts: [product, ...state.userProducts]
+            }
+        case constants.FETCH_PRODUCTS_SUCCESS:
+            return {
+                ...state,
+                availableProducts: payload,
+                userProducts: payload.filter((product: Product)=>product.userId === 'u3')
             }
         case constants.UPDATE_PRODUCT:
             productIndex = state.userProducts.findIndex(product => product.id === payload.id);

@@ -6,7 +6,7 @@ import {StackScreenProps} from "@react-navigation/stack";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import CartItem from "../../components/CartItem/CartItem";
-import {Product} from "../../models/Product";
+import {Product} from "../../models/Product/Product";
 import Button from "../../components/basicComponents/Button/Button";
 import * as productsActions from '../../store/actions/products.actions'
 import * as orderActions from '../../store/actions/orders.actions'

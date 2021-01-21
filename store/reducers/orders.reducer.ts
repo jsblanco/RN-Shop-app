@@ -1,5 +1,5 @@
 import * as constants from '../constants/orders.constants'
-import {Order} from "../../models/Order";
+import {Order} from "../../models/Order/Order";
 
 type StateType = {
     orders: Order[]

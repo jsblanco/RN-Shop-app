@@ -4,7 +4,7 @@ import styles from './OrdersScreen.styles';
 import {StackScreenProps} from "@react-navigation/stack";
 import {useSelector} from "react-redux";
 import {RootState} from "../../store/store";
-import {Order} from "../../models/Order";
+import {Order} from "../../models/Order/Order";
 import OrderListItem from "../../components/OrderListItem/OrderListItem";
 import Text from "../../components/basicComponents/Text/Text";
 

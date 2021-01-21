@@ -5,12 +5,12 @@ import Text from "../../components/basicComponents/Text/Text";
 import {StackScreenProps} from "@react-navigation/stack";
 import {useSelector} from "react-redux";
 import {RootState} from "../../store/store";
-import {Product} from "../../models/Product";
+import {Product} from "../../models/Product/Product";
 import CartItem from "../../components/CartItem/CartItem";
 import Button from "../../components/basicComponents/Button/Button";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import HeaderButton from "../../components/basicComponents/HeaderButton/HeaderButton";
-import {Order} from "../../models/Order";
+import {Order} from "../../models/Order/Order";
 
 type Props = StackScreenProps<ShoppingStackNavigation, 'OrderDetails'>;
 

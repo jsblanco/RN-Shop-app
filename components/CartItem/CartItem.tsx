@@ -5,7 +5,7 @@ import Text from "../../components/basicComponents/Text/Text";
 import Button from "../basicComponents/Button/Button";
 import * as actions from "../../store/actions/products.actions";
 import {useDispatch} from "react-redux";
-import {Product} from "../../models/Product";
+import {Product} from "../../models/Product/Product";
 import {useNavigation} from "@react-navigation/native";
 import Card from "../basicComponents/Card/Card";
 

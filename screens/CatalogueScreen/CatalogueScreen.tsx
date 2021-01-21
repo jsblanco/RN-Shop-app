@@ -5,7 +5,7 @@ import styles from './CatalogueScreen.styles';
 import * as actions from "../../store/actions/products.actions";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
-import {Product} from "../../models/Product";
+import {Product} from "../../models/Product/Product";
 import {Ionicons} from "@expo/vector-icons";
 import colours from "../../constants/colours";
 import ProductListItem from "../../components/ProductListItem/ProductListItem";

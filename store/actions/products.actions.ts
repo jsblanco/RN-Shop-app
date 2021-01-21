@@ -1,5 +1,6 @@
 import * as constants from '../constants/products.constants';
-import {Order} from "../../models/Order";
+import {Order} from "../../models/Order/Order";
+import {Product} from "../../models/Product/Product";
 
 export const addToCart = (productId: string) => {
     return {
@@ -15,7 +16,7 @@ export const removeFromCart = (productId: string) => {
     }
 }
 
-export const emptyCart = () =>{
+export const emptyCart = () => {
     return {
         type: constants.EMPTY_CART
     }
@@ -28,44 +29,51 @@ export const deleteProduct = (productId: string) => {
     }
 }
 
-export const updateProduct = (id: string, title: string, description: string, imageUrl: string) => {
-    return {
-        type: constants.UPDATE_PRODUCT,
-        payload: {
-            id,
-            title,
-            description,
-            imageUrl
+export const updateProduct = {
+    request: (id: string, title: string, description: string, imageUrl: string) => {
+        return {
+            type: constants.UPDATE_PRODUCT,
+            payload: {id, title, description, imageUrl}
         }
     }
 }
 
-export const createProduct = (title: string, description: string, price: string, imageUrl: string) => {
-    return {
-        type: constants.CREATE_PRODUCT,
-        payload: {
-            title,
-            description,
-            price,
-            imageUrl
+export const createProduct = {
+    request: (title: string, description: string, price: string, imageUrl: string) => {
+        return {
+            type: constants.CREATE_PRODUCT_REQUEST,
+            payload: {title, description, price, imageUrl}
+        }
+    },
+    success: (payload: { id: string, title: string, description: string, price: string, imageUrl: string }) => {
+        return {
+            type: constants.CREATE_PRODUCT_SUCCESS,
+            payload: payload
+        }
+    },
+    failure: (error: any) => {
+        return {
+            type: constants.CREATE_PRODUCT_FAILURE,
+            payload: error
         }
     }
 }
 
+export const fetchProducts = {
+    request: {
+        type: constants.FETCH_PRODUCTS_REQUEST,
+    },
 
-export const createProductSuccess = (payload: { title: string, description: string, price: string, imageUrl: string }) => {
-    return {
-        type: constants.CREATE_PRODUCT_SUCCESS,
-        payload: {
-            id: new Date().getTime().toString(),
-            ...payload
+    success: (payload: Product[]) => {
+        return {
+            type: constants.FETCH_PRODUCTS_SUCCESS,
+            payload: payload
         }
-    }
-}
-
-export const createProductFailure = (error: any) => {
-    return {
-        type: constants.CREATE_PRODUCT_FAILURE,
-        payload: error
+    },
+    failure: (error: any) => {
+        return {
+            type: constants.FETCH_PRODUCTS_FAILURE,
+            payload: error
+        }
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, Platform, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
-import {Product} from "../../models/Product";
+import {Product} from "../../models/Product/Product";
 import styles from './ProductListItem.styles';
 import Text from "../../components/basicComponents/Text/Text";
 import Card from "../basicComponents/Card/Card";

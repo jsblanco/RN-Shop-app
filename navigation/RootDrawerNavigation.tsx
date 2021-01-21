@@ -6,11 +6,17 @@ import {ProductsStackNavigation} from "./stacks/ProductsStackNavigation";
 import {NavigationContainer} from '@react-navigation/native';
 import colours from "../constants/colours";
 import {Ionicons} from "@expo/vector-icons";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../store/store";
+import {fetchProducts} from "../store/actions/products.actions";
 
 const Drawer = createDrawerNavigator();
 
 export function RootDrawerNavigation() {
 
+    const dispatch = useDispatch()
+    const productList = useSelector((state: RootState) => state.products.availableProducts);
+    if (productList.length === 0) dispatch(fetchProducts.request)
 
     return (
         <NavigationContainer>
