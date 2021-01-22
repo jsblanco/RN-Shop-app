@@ -17,7 +17,6 @@ const ordersReducer = (state: StateType = initialState, {type, payload}: { type:
     let order: Order;
     switch (type) {
         case constants.SAVE_ORDER_SUCCESS:
-            console.log(payload)
             return {...state, orders: [payload, ...state.orders], error: ''}
         case constants.FETCH_ORDERS_SUCCESS:
             return {...state, error: '', orders: payload}

@@ -14,7 +14,7 @@ function* fetchProductsEffect() {
         const products = [];
         const fetchedProducts = yield call(fetchProductsFromDb);
         for (let key in fetchedProducts) {
-            const product = productAdapter.adapt({id: key, userId: 'u3', ...fetchedProducts[key]})
+            const product = productAdapter.adapt({id: key, ...fetchedProducts[key]})
             products.push(product)
         }
         const userId = yield select(getUserId)

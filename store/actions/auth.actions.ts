@@ -13,7 +13,6 @@ type authResponse = {
 
 export const signup = {
     request: (email: string, password: string) => {
-        console.log('signup')
         return {
             type: constants.SIGNUP_REQUEST,
             payload: {email: email, password: password}
@@ -35,7 +34,6 @@ export const signup = {
 
 export const login = {
     request: (email: string, password: string) => {
-        console.log('login')
         return {
             type: constants.LOGIN_REQUEST,
             payload: {email: email, password: password}

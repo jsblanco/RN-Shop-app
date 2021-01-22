@@ -20,8 +20,6 @@ export class OrderAdapter implements Adapter<Order> {
             })
             purchases.push({amount: item.amount, product: product})
         })
-
-        console.log(purchases)
         return new Order(
             item.id,
             item.userId,

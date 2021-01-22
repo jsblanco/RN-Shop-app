@@ -34,7 +34,7 @@ function* saveOrderEffect({payload}: { type: string, payload: { product: Product
         let price = 0;
         payload.map(item => price += item.product.price * item.amount)
         const orderId = yield call(saveOrderInDb, {userId: userId, purchases: payload, date, price, token});
-        const order = orderAdapter.adapt({id: orderId.name, userId: 'u3', date, purchases: payload, price})
+        const order = orderAdapter.adapt({id: orderId.name, userId: userId, date, purchases: payload, price})
         yield put(saveOrder.success(order));
     } catch (e) {
         console.error(e);
