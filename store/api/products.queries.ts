@@ -1,21 +1,22 @@
+// @ts-ignore
 import {axiosInstance} from "./axios/axios";
 
 export const fetchProductsFromDb = () => {
     return axiosInstance.get("/products.json")
 }
 
-export const createProductInDb = ({title, userId, description, imageUrl, price}:
-                                      { title: string, userId: string, description: string, imageUrl: string, price: string }) => {
-    return axiosInstance.post("/products.json", {title, userId, description, imageUrl, price})
+export const createProductInDb = ({title, userId, description, imageUrl, price, token}:
+                                      { title: string, userId: string, description: string, imageUrl: string, price: string, token: string }) => {
+    return axiosInstance.post(`/products.json?auth=${token}`, {title, userId, description, imageUrl, price})
 }
 
-export const updateProductInDb = ({title, description, imageUrl, id}:
-                                      { title: string, description: string, imageUrl: string, id: string }) => {
-    return axiosInstance.patch(`/products/${id}.json`, {title, description, imageUrl})
+export const updateProductInDb = ({title, description, imageUrl, id, token}:
+                                      { title: string, description: string, imageUrl: string, id: string, token: string }) => {
+    return axiosInstance.patch(`/products/${id}.json?auth=${token}`, {title, description, imageUrl})
 }
 
-export const deleteProductInDb = (id: string) => {
-    return axiosInstance.delete(`/products/${id}.json`)
+export const deleteProductInDb = ({id, token}:{id: string, token: string}) => {
+    return axiosInstance.delete(`/products/${id}.json?auth=${token}`)
 }
 
 /*/

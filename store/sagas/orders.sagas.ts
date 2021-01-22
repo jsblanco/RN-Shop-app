@@ -1,11 +1,14 @@
-import {takeLatest, call, put} from "redux-saga/effects";
+import {takeLatest, call, put, select} from "redux-saga/effects";
 import * as constants from "../constants/orders.constants";
 import {fetchOrders, saveOrder} from "../actions/orders.actions";
 import {Product} from "../../models/Product/Product";
 import {fetchOrdersFromDb, saveOrderInDb} from "../api/orders.queries";
 import {OrderAdapter} from "../../models/Order/Order.adapter";
+import {RootState} from "../store";
 
 const orderAdapter = new OrderAdapter();
+const getToken = (state: RootState) => state.auth.token
+const getUserId = (state: RootState) => state.auth.userId
 
 function* fetchOrdersEffect() {
     try {

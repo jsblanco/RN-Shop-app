@@ -6,9 +6,9 @@ import {login, signup} from "../actions/auth.actions";
 
 function* signupEffect({payload}: { type: string, payload: { email: string, password: string } }) {
     try {
-        const userToken = yield call(createUserInDb, payload);
-        console.log(userToken)
-        yield put(signup.success(userToken));
+        const serverResponse = yield call(createUserInDb, payload);
+        console.log(serverResponse)
+        yield put(signup.success({token: serverResponse.idToken, userId: serverResponse.localId}));
     } catch (e) {
         console.error(e);
         yield put(signup.failure(e));
@@ -17,9 +17,9 @@ function* signupEffect({payload}: { type: string, payload: { email: string, pass
 
 function* loginEffect({payload}: { type: string, payload: { email: string, password: string } }) {
     try {
-        const userToken = yield call(loginUserFromDb, payload);
-        console.log(userToken)
-        yield put(login.success(userToken));
+        const serverResponse = yield call(loginUserFromDb, payload);
+        console.log(serverResponse)
+        yield put(login.success({token: serverResponse.idToken, userId: serverResponse.localId}));
     } catch (e) {
         console.error(e);
         yield put(login.failure(e));
