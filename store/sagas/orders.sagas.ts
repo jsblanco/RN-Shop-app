@@ -12,10 +12,11 @@ const getUserId = (state: RootState) => state.auth.userId
 
 function* fetchOrdersEffect() {
     try {
+        const userId = yield select(getUserId)
+        const fetchedOrders = yield call(fetchOrdersFromDb, userId);
         const orderArr = [];
-        const fetchedOrders = yield call(fetchOrdersFromDb);
         for (let key in fetchedOrders) {
-            const order = orderAdapter.adapt({id: key, userId: 'u3', ...fetchedOrders[key]})
+            const order = orderAdapter.adapt({id: key, ...fetchedOrders[key]})
             orderArr.unshift(order)
         }
         yield put(fetchOrders.success(orderArr));
@@ -27,10 +28,12 @@ function* fetchOrdersEffect() {
 
 function* saveOrderEffect({payload}: { type: string, payload: { product: Product, amount: number }[] }) {
     try {
+        const userId = yield select(getUserId)
+        const token = yield select(getToken)
         const date = new Date();
         let price = 0;
         payload.map(item => price += item.product.price * item.amount)
-        const orderId = yield call(saveOrderInDb, {userId: 'u3', purchases: payload, date, price});
+        const orderId = yield call(saveOrderInDb, {userId: userId, purchases: payload, date, price, token});
         const order = orderAdapter.adapt({id: orderId.name, userId: 'u3', date, purchases: payload, price})
         yield put(saveOrder.success(order));
     } catch (e) {

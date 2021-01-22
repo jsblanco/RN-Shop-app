@@ -27,7 +27,7 @@ export const fetchProducts = {
         type: constants.FETCH_PRODUCTS_REQUEST,
     },
 
-    success: (payload: Product[]) => {
+    success: (payload: {products: Product[], userId: string }) => {
         return {
             type: constants.FETCH_PRODUCTS_SUCCESS,
             payload: payload
@@ -42,10 +42,10 @@ export const fetchProducts = {
 }
 
 export const createProduct = {
-    request: (title: string, userId: string, description: string, price: string, imageUrl: string) => {
+    request: (title: string, description: string, price: string, imageUrl: string) => {
         return {
             type: constants.CREATE_PRODUCT_REQUEST,
-            payload: {title, userId, description, price, imageUrl}
+            payload: {title, description, price, imageUrl}
         }
     },
     success: (payload: Product) => {

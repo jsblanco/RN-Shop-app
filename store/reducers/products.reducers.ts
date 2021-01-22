@@ -56,15 +56,15 @@ const productsReducer = (state: StateType = initialState, {type, payload}: { typ
             return {
                 ...state,
                 error: '',
-                availableProducts: [payload, ...state.availableProducts],
-                userProducts: [payload, ...state.userProducts]
+                availableProducts: [...state.availableProducts, payload],
+                userProducts: [...state.userProducts, payload]
             }
         case constants.FETCH_PRODUCTS_SUCCESS:
             return {
                 ...state,
                 error: '',
-                availableProducts: payload,
-                userProducts: payload.filter((product: Product) => product.userId === 'u3')
+                availableProducts: payload.products,
+                userProducts: payload.products.filter((product: Product) => product.userId === payload.userId)
             }
         case constants.UPDATE_PRODUCT_SUCCESS:
             productIndex = state.userProducts.findIndex(product => product.id === payload.id);

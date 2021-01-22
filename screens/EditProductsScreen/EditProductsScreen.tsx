@@ -91,7 +91,7 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
         const {title, description, price, imageUrl} = formState.inputValues;
         !!editedProduct
             ? dispatch(productActions.updateProduct.request(editedProduct.id, title, description, imageUrl))
-            : dispatch(productActions.createProduct.request(title, 'u3', description, price, imageUrl));
+            : dispatch(productActions.createProduct.request(title, description, price, imageUrl));
         navigation.navigate('Products')
     }, [dispatch, editedProduct, formState])
 
