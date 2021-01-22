@@ -1,5 +1,5 @@
 import axios from "axios";
-import {Product} from "../../models/Product/Product";
+import {Product} from "../../../models/Product/Product";
 
 const baseUrl = 'https://jorge-shop-app-default-rtdb.europe-west1.firebasedatabase.app';
 

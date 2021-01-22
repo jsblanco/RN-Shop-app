@@ -1,3 +1,8 @@
+type AuthStackNavigation = {
+    Auth: undefined;
+};
+
+
 type ShoppingStackNavigation = {
     Catalogue: undefined;
     ProductDetails: {

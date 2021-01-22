@@ -1,4 +1,4 @@
-import {axiosInstance} from "./axios";
+import {axiosInstance} from "./axios/axios";
 
 export const fetchProductsFromDb = () => {
     return axiosInstance.get("/products.json")

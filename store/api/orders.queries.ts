@@ -1,4 +1,4 @@
-import {axiosInstance} from "./axios";
+import {axiosInstance} from "./axios/axios";
 import {Product} from "../../models/Product/Product";
 
 export const fetchOrdersFromDb = () => {

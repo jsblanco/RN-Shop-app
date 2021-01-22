@@ -17,8 +17,7 @@ export type KeyboardType =
 export type AutoCapitalizeType = "sentences" | "none" | "words" | "characters" | undefined
 export type FormControlType = {
     label: string,
-    formTouched: boolean,
-    keyName: string,
+    inputName: string,
     value: string,
     isValid: boolean,
     inputHandler: (key: string, value: string, isValid: boolean) => void,
@@ -33,4 +32,5 @@ export type FormControlType = {
     max?: number
     minLength?: number
     maxLength?: number
+    secureTextEntry?: boolean
 }

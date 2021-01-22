@@ -1,6 +1,5 @@
 import {takeLatest, call, put} from "redux-saga/effects";
 import * as constants from "../constants/orders.constants";
-//import { getTweetsByUsername, getTweetsByKeyword } from "../utils/server-queries";
 import {fetchOrders, saveOrder} from "../actions/orders.actions";
 import {Product} from "../../models/Product/Product";
 import {fetchOrdersFromDb, saveOrderInDb} from "../api/orders.queries";

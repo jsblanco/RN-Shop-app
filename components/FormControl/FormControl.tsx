@@ -28,27 +28,27 @@ const inputReducer = (state: any, {type, value, isValid}: { type: string, value?
 const FormControl = ({
                          label,
                          value,
-                         keyName,
+                         inputName,
                          isValid,
-                         formTouched,
                          inputHandler,
-                         autoCompleteType = 'off',
-                         multiline = false,
-                         keyboardType = 'default',
-                         autoCapitalize = 'sentences',
-                         autoCorrect = true,
                          min,
                          max,
                          minLength,
                          maxLength,
                          email,
                          required,
+                         multiline = false,
+                         autoCorrect = true,
+                         secureTextEntry = false,
+                         keyboardType = 'default',
+                         autoCompleteType = 'off',
+                         autoCapitalize = 'sentences',
                      }: FormControlType) => {
 
     const [state, dispatch] = useReducer(inputReducer, {
         value: value ? value : '',
         isValid: isValid,
-        isTouched: formTouched,
+        isTouched: false
     });
 
     const stringChangeHandler = (input: string) => {
@@ -77,7 +77,7 @@ const FormControl = ({
     }
 
     useEffect(() => {
-        !!state.isTouched && inputHandler(keyName, state.value, state.isValid)
+        !!state.isTouched && inputHandler(inputName, state.value, state.isValid)
     }, [inputHandler, state])
 
     // @ts-ignore
@@ -94,6 +94,7 @@ const FormControl = ({
                 onChangeText={stringChangeHandler}
                 autoCompleteType={autoCompleteType}
                 onBlur={lostFocusHandler}
+                secureTextEntry={secureTextEntry}
             />
             {state.isTouched && !state.isValid &&
             <Text style={styles.warning}>Please input a valid {label.toLowerCase()}</Text>}

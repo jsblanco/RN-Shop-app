@@ -64,7 +64,6 @@ const formReducer = (state: ReducerStateType, a: ActionsType) => {
 const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) => {
 
     const editedProduct = useSelector((state: RootState) => state.products.userProducts.find((product: Product) => product.id === productId))
-    const [formTouched, setFormTouched] = useState(false)
     const dispatch = useDispatch();
 
 
@@ -85,7 +84,6 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
     })
 
     const saveChanges = useCallback(() => {
-        if (!formTouched) setFormTouched(true)
         if (!formState.formIsValid) {
             Alert.alert('Missing inputs', 'Please input all product data, then press Submit', [{text: 'Ok'}])
             return
@@ -128,9 +126,8 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
             <ScrollView>
                 <View style={styles.form}>
                     <FormControl
-                        keyName={'title'}
+                        inputName={'title'}
                         label={'product name'}
-                        formTouched={formTouched}
                         value={formState.inputValues.title}
                         isValid={formState.inputValidities.title}
                         inputHandler={stringInputHandler}
@@ -138,8 +135,7 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
                         required
                     />
                     <FormControl
-                        keyName={'description'}
-                        formTouched={formTouched}
+                        inputName={'description'}
                         label={'product description'}
                         value={formState.inputValues.description}
                         isValid={formState.inputValidities.description}
@@ -149,9 +145,8 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
                         required
                     />
                     <FormControl
-                        keyName={'imageUrl'}
+                        inputName={'imageUrl'}
                         label={'image URL'}
-                        formTouched={formTouched}
                         value={formState.inputValues.imageUrl}
                         isValid={formState.inputValidities.imageUrl}
                         inputHandler={stringInputHandler}
@@ -160,10 +155,9 @@ const EditProductsScreen = ({route: {params: {productId}}, navigation}: Props) =
                     {!editedProduct &&
                     <FormControl
                         label={'Price'}
-                        keyName={'price'}
+                        inputName={'price'}
                         value={formState.inputValues.price}
                         isValid={formState.inputValidities.price}
-                        formTouched={formTouched}
                         inputHandler={stringInputHandler}
                         keyboardType={"decimal-pad"}
                         required
