@@ -1,17 +1,18 @@
 import * as constants from '../constants/auth.constants'
 
 type StateType = {
-    key: any,
+    isLoggedIn: boolean,
 }
 
 const initialState: StateType = {
-    key: undefined
+    isLoggedIn: false
 }
 
 const authReducer = (state: StateType = initialState, {type, payload}: { type: string, payload: any }) => {
     switch (type) {
         case constants.SIGNUP_SUCCESS:
-            return {...state}
+        case constants.LOGIN_SUCCESS:
+            return {...state, isLoggedIn: true}
         default:
             return {...state};
     }

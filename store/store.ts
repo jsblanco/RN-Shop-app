@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
     orders: ordersReducer,
     auth: authReducer
 })
+
 export type RootState = ReturnType<typeof rootReducer>
 
 export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));

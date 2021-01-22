@@ -1,7 +1,7 @@
 import axios from "axios";
 import {Product} from "../../../models/Product/Product";
 
-const baseUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBANhzKXlQjW3l1KXqGttm1DuswCGKVM5E";
+const baseUrl = "https://identitytoolkit.googleapis.com/v1";
 
 export const axiosAuthInstance = axios.create({
     baseURL: baseUrl,
@@ -18,10 +18,3 @@ axiosAuthInstance.interceptors.response.use(
     }
 );
 
-// declare module 'axios' {
-//     export interface AxiosRequestConfig {
-//         email: string,
-//         password: string,
-//         returnSecureToken: true
-//     }
-// }

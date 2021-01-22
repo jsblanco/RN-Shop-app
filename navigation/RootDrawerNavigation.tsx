@@ -7,11 +7,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import colours from "../constants/colours";
 import {Ionicons} from "@expo/vector-icons";
 import {AuthStackNavigation} from "./stacks/AuthStackNavigation";
+import {useSelector} from "react-redux";
+import {RootState} from "../store/store";
 
 const Drawer = createDrawerNavigator();
 
 export function RootDrawerNavigation() {
-    const isLoggedIn = false;
+    const isLoggedIn = useSelector((state: RootState)=>state.auth.isLoggedIn);
     return (
         <NavigationContainer>
             {isLoggedIn ? (

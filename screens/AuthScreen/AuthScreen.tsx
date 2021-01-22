@@ -1,4 +1,4 @@
-import React, {useCallback, useReducer} from 'react';
+import React, {useCallback, useEffect, useReducer, useState} from 'react';
 import {KeyboardAvoidingView, ScrollView, View} from 'react-native';
 import styles from './AuthScreen.styles';
 import Button from "../../components/basicComponents/Button/Button";
@@ -6,8 +6,9 @@ import FormControl from "../../components/FormControl/FormControl";
 import Card from "../../components/basicComponents/Card/Card";
 import {LinearGradient} from "expo-linear-gradient";
 import {StackScreenProps} from "@react-navigation/stack";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import * as authActions from '../../store/actions/auth.actions'
+import {RootState} from "../../store/store";
 
 type Props = StackScreenProps<AuthStackNavigation, 'Auth'>;
 type ReducerStateType = {
@@ -57,7 +58,9 @@ const formReducer = (state: ReducerStateType, a: ActionsType) => {
 
 
 const AuthScreen = ({route, navigation}: Props) => {
+    const isLoggedIn = useSelector((state:RootState)=> state.auth.isLoggedIn)
     const dispatch = useDispatch()
+    const [isSigningUp, setIsSigningUp] = useState(false)
     const [formState, formDispatch] = useReducer(formReducer, {
         inputValues: {email: '', password: '',},
         inputValidities: {email: false, password: false,},
@@ -66,9 +69,16 @@ const AuthScreen = ({route, navigation}: Props) => {
     const inputHandler = useCallback((key: string, value: string, isValid: boolean) => {
         formDispatch({type: FORM_UPDATE, value: value, isValid: isValid, input: key})
     }, [formDispatch])
-    const signupHandler = () => {
+
+
+
+    const authHandler = () => {
         if (formState.formIsValid) {
-            dispatch(authActions.signup.request(formState.inputValues.email, formState.inputValues.password))
+            let action;
+            isSigningUp
+                ? action = authActions.signup.request(formState.inputValues.email, formState.inputValues.password)
+                : action =authActions.login.request(formState.inputValues.email, formState.inputValues.password)
+            dispatch(action)
         }
     }
 
@@ -101,13 +111,16 @@ const AuthScreen = ({route, navigation}: Props) => {
                         required
                     />
                     <View style={styles.actionRow}>
-                        <Button onPress={signupHandler}>Sign up</Button>
+                        <Button onPress={authHandler}>{isSigningUp
+                            ? 'Sign up'
+                            : 'Log in'}</Button>
                         <Button
-                            onPress={() => {
-                            }}
+                            onPress={() => setIsSigningUp(isSigningUp => !isSigningUp)}
                             buttonStyle={styles.secondaryButtonView}
                             textStyle={styles.secondaryButtonText}
-                        >Already have an account?</Button>
+                        >{isSigningUp
+                            ? 'Already have an account?'
+                            : 'Don\'t have an account?'}</Button>
                     </View>
                 </ScrollView>
             </Card>
