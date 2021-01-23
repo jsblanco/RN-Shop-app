@@ -31,7 +31,7 @@ const ProductsScreen = ({route, navigation}: Props) => {
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', loadProducts)
-        return unsubscribe;
+        return unsubscribe();
     }, [loadProducts])
 
     useEffect(() => {

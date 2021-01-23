@@ -1,19 +1,21 @@
-import React from 'react';
-import {createDrawerNavigator} from "@react-navigation/drawer";
+import React, {useCallback} from 'react';
+import {createDrawerNavigator, DrawerItem} from "@react-navigation/drawer";
 import {OrdersStackNavigation} from "./stacks/OrdersStackNavigation";
 import {ShoppingStackNavigation} from "./stacks/ShoppingStackNavigation";
 import {ProductsStackNavigation} from "./stacks/ProductsStackNavigation";
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import colours from "../constants/colours";
 import {Ionicons} from "@expo/vector-icons";
 import {AuthStackNavigation} from "./stacks/AuthStackNavigation";
 import {useSelector} from "react-redux";
 import {RootState} from "../store/store";
+import CustomDrawerContent from "../components/CustomDrawerContent/CustomDrawerContent";
+
 
 const Drawer = createDrawerNavigator();
 
 export function RootDrawerNavigation() {
-    const isLoggedIn = useSelector((state: RootState)=>state.auth.isLoggedIn);
+    const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
     return (
         <NavigationContainer>
             {isLoggedIn ? (
@@ -21,10 +23,9 @@ export function RootDrawerNavigation() {
                     initialRouteName="Shopping"
                     drawerContentOptions={{
                         activeTintColor: colours.brightAccent,
-                        itemStyle: {
-                            width: '100%',
-                        }
+                        itemStyle: {width: '100%',}
                     }}
+                    drawerContent={props => <CustomDrawerContent {...props}/>}
                 >
                     <Drawer.Screen
                         name="Shopping"
@@ -56,7 +57,7 @@ export function RootDrawerNavigation() {
                             ),
                         }}
                     />
-                </Drawer.Navigator>
+                  </Drawer.Navigator>
             ) : (
                 <Drawer.Navigator
                     initialRouteName="Login"

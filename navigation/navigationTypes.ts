@@ -1,5 +1,6 @@
 type AuthStackNavigation = {
-    Auth: undefined;
+    StartUp: undefined
+    Auth: undefined
 };
 
 
@@ -8,28 +9,28 @@ type ShoppingStackNavigation = {
     ProductDetails: {
         productId: string,
     }
-    ShoppingCart: undefined;
+    ShoppingCart: undefined
     OrderDetails: {
         orderId: string,
     }
-};
+}
 
 type OrderStackNavigation = {
-    Orders: undefined;
+    Orders: undefined
     OrderDetails: {
         orderId: string,
     }
     ProductDetails: {
         productId: string,
     }
-};
+}
 
 type ProductsStackNavigation = {
-    Products: undefined;
+    Products: undefined
     ProductDetails: {
         productId: string,
     }
     EditProduct: {
         productId?: string,
     }
-};
+}

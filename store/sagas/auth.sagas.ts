@@ -2,7 +2,7 @@ import {takeLatest, call, put} from "redux-saga/effects";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as constants from "../constants/auth.constants";
 import {createUserInDb, loginUserFromDb} from "../api/auth.queries"
-import {login, signup} from "../actions/auth.actions";
+import {login, logout, signup} from "../actions/auth.actions";
 
 
 function* signupEffect({payload}: { type: string, payload: { email: string, password: string } }) {
@@ -29,9 +29,20 @@ function* loginEffect({payload}: { type: string, payload: { email: string, passw
     }
 }
 
+function* logoutEffect() {
+    try {
+        console.log('logout')
+        deleteDataFromStorage()
+        yield put(logout.success())
+    } catch (e) {
+        console.error(e);
+    }
+}
+
 function* authSagas() {
     yield takeLatest(constants.SIGNUP_REQUEST, signupEffect);
     yield takeLatest(constants.LOGIN_REQUEST, loginEffect);
+    yield takeLatest(constants.LOGOUT_REQUEST, logoutEffect);
 }
 
 export default authSagas;
@@ -44,6 +55,14 @@ const saveDataToStorage = async (token: string, userId: string, expirationDate: 
             userId: userId,
             expirationDate: expirationDate.toISOString()
         }))
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+const deleteDataFromStorage = async () => {
+    try {
+        await AsyncStorage.removeItem('userData')
     } catch (e) {
         console.error(e);
     }

@@ -5,6 +5,7 @@ import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import HeaderButton from "../../components/basicComponents/HeaderButton/HeaderButton";
 import {DrawerActions, useNavigation} from "@react-navigation/native";
 import AuthScreen from "../../screens/AuthScreen/AuthScreen";
+import StartUpScreen from "../../screens/StartUpScreen/StartUpScreen";
 
 const Stack = createStackNavigator();
 
@@ -13,12 +14,16 @@ export function AuthStackNavigation() {
     const navigation = useNavigation()
     return (
         <Stack.Navigator
-            initialRouteName="Auth"
+            initialRouteName="Startup"
             // @ts-ignore
             screenOptions={{
                 ...styles
             }}
         >
+            <Stack.Screen
+                name="StartUp"
+                component={StartUpScreen}
+                />
             <Stack.Screen
                 name="Auth"
                 component={AuthScreen}

@@ -16,13 +16,15 @@ const authReducer = (state: StateType = initialState, {type, payload}: { type: s
     switch (type) {
         case constants.SIGNUP_SUCCESS:
         case constants.LOGIN_SUCCESS:
+        case constants.VALID_TOKEN_FOUND:
             return {
                 ...state,
                 isLoggedIn: true,
                 token: payload.token,
                 userId: payload.userId,
             };
-        case constants.LOGOUT:
+        case constants.LOGOUT_SUCCESS:
+            console.log('Logout!!')
             return {
                 ...state,
                 isLoggedIn: false,

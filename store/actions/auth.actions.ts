@@ -53,8 +53,28 @@ export const login = {
     }
 }
 
-export const logout = () => {
+export const authenticate = (token: string, userId: string) => {
     return {
-        type: constants.LOGOUT
+        type: constants.VALID_TOKEN_FOUND,
+        payload: {token: token, userId: userId}
+    }
+}
+
+export const logout = {
+    request: () => {
+        return {
+            type: constants.LOGOUT_REQUEST,
+        }
+    },
+    success: () => {
+        return {
+            type: constants.LOGOUT_SUCCESS,
+        }
+    },
+    failure: (error: any) => {
+        return {
+            type: constants.LOGOUT_FAILURE,
+            payload: error
+        }
     }
 }
