@@ -5,7 +5,7 @@ import colours from "../../constants/colours";
 import styles from './StartUpScreen.styles';
 import {StackScreenProps} from "@react-navigation/stack";
 import {useDispatch} from "react-redux";
-import {authenticate} from "../../store/actions/auth.actions";
+import {authenticate, logout} from "../../store/actions/auth.actions";
 
 type Props = StackScreenProps<AuthStackNavigation, 'StartUp'>;
 
@@ -19,7 +19,7 @@ const StartUpScreen = ({route, navigation}: Props) => {
             const {token, userId, expirationDate} = JSON.parse(userData + '');
             if (new Date(expirationDate) <= new Date()
                 || !token
-                || !userId) return navigation.navigate('Auth');
+                || !userId) return dispatch(logout.request());
             dispatch(authenticate(token, userId))
         }
         isUserLoggedIn()
